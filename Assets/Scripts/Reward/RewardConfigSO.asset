@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7687c18af5d98445b9dc1733cfd39ac, type: 3}
+  m_Name: RewardConfigSO
+  m_EditorClassIdentifier: 
+  rewardConfigs:
+  - _rewardType: 27
+    _iconSprite: {fileID: 21300000, guid: fd2fc2ab81bbe3b4281c43db7d3638d1, type: 3}
+    _baseMultiplier: 0
+  - _rewardType: 1
+    _iconSprite: {fileID: 21300000, guid: 470f70db00018e74f93a6cbfcabb7aff, type: 3}
+    _baseMultiplier: 1
+  - _rewardType: 0
+    _iconSprite: {fileID: 21300000, guid: 236260d0ddd40fa4b90cef9cb0c8703f, type: 3}
+    _baseMultiplier: 100
+  - _rewardType: 2
+    _iconSprite: {fileID: 21300000, guid: 150c5eadb03c8c043bfe8208120bda67, type: 3}
+    _baseMultiplier: 200
+  - _rewardType: 3
+    _iconSprite: {fileID: 21300000, guid: a7ae2f14ed0368443b7f08338181f355, type: 3}
+    _baseMultiplier: 300
+  - _rewardType: 4
+    _iconSprite: {fileID: 21300000, guid: 9a42fe06ebb079b4ca99f65e434aa7ee, type: 3}
+    _baseMultiplier: 200
+  - _rewardType: 6
+    _iconSprite: {fileID: 21300000, guid: 0f6b23b158e448544a4def7701bc0d58, type: 3}
+    _baseMultiplier: 200
+  - _rewardType: 7
+    _iconSprite: {fileID: 21300000, guid: b001715fa009c1542af82bcaca257193, type: 3}
+    _baseMultiplier: 200
+  - _rewardType: 8
+    _iconSprite: {fileID: 21300000, guid: d72d422b5285ac24c984f8863ed6a434, type: 3}
+    _baseMultiplier: 250
+  - _rewardType: 9
+    _iconSprite: {fileID: 21300000, guid: b3ba445a562fa9743845525533606ded, type: 3}
+    _baseMultiplier: 500
+  - _rewardType: 10
+    _iconSprite: {fileID: 21300000, guid: 85daf13436550a244af32ef3e2a4caeb, type: 3}
+    _baseMultiplier: 750
+  - _rewardType: 11
+    _iconSprite: {fileID: 21300000, guid: 9690fd201b8f19346b6f168b24b8ea1f, type: 3}
+    _baseMultiplier: 1000
+  - _rewardType: 12
+    _iconSprite: {fileID: 21300000, guid: 5e2b9ca6707198747aa43357aa2944d2, type: 3}
+    _baseMultiplier: 1250
+  - _rewardType: 14
+    _iconSprite: {fileID: 21300000, guid: be6ff47158e6ac64285c59236ef38d54, type: 3}
+    _baseMultiplier: 1500
+  - _rewardType: 13
+    _iconSprite: {fileID: 21300000, guid: a27d3e1e00e1c834bbf54f1a9b88f29c, type: 3}
+    _baseMultiplier: 2000
+  - _rewardType: 15
+    _iconSprite: {fileID: 21300000, guid: 175e218fbcebd0447b178245effe4cee, type: 3}
+    _baseMultiplier: 3000
+  - _rewardType: 16
+    _iconSprite: {fileID: 21300000, guid: ad70395645de84d44b46cf65108fa553, type: 3}
+    _baseMultiplier: 2000
+  - _rewardType: 17
+    _iconSprite: {fileID: 21300000, guid: 60a951a4a0f7270409f1e440ce117055, type: 3}
+    _baseMultiplier: 3000
+  - _rewardType: 18
+    _iconSprite: {fileID: 21300000, guid: 0c6d049c8e6c88b4ebb6f7ae54868b13, type: 3}
+    _baseMultiplier: 2250
+  - _rewardType: 19
+    _iconSprite: {fileID: 21300000, guid: d57835633aa1ba841879c4619652d3e5, type: 3}
+    _baseMultiplier: 2500
+  - _rewardType: 20
+    _iconSprite: {fileID: 21300000, guid: 84f2c04e74c9ad14890fb528d7c5b5c1, type: 3}
+    _baseMultiplier: 2500
+  - _rewardType: 21
+    _iconSprite: {fileID: 21300000, guid: 476c30ddb56d07f439c4c5ff3c1e2daf, type: 3}
+    _baseMultiplier: 3000
+  - _rewardType: 22
+    _iconSprite: {fileID: 21300000, guid: 8008b9ccca8466a4788f79e2f64a28fa, type: 3}
+    _baseMultiplier: 3000
+  - _rewardType: 23
+    _iconSprite: {fileID: 21300000, guid: 47a518a1264e9354889c2ec76fb2cd1e, type: 3}
+    _baseMultiplier: 3250
+  - _rewardType: 24
+    _iconSprite: {fileID: 21300000, guid: 8a6cb65d85306b641adddfd262ec7486, type: 3}
+    _baseMultiplier: 3250
+  - _rewardType: 25
+    _iconSprite: {fileID: 21300000, guid: ee84c0ad0dcd4a04891104ac019891fe, type: 3}
+    _baseMultiplier: 4000
+  - _rewardType: 26
+    _iconSprite: {fileID: 21300000, guid: c28d2872f05a6c543848bdd2b01f1566, type: 3}
+    _baseMultiplier: 4000

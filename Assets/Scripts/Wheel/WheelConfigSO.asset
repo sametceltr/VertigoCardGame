@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5bf4f71548a2d04086da9b7fa5f51bd, type: 3}
+  m_Name: WheelConfigSO
+  m_EditorClassIdentifier: 
+  wheelConfigurations:
+  - _wheelType: 0
+    _baseSprite: {fileID: 21300000, guid: 0d091380fcd5c9f45842ccba64471ab6, type: 3}
+    _indicatorSprite: {fileID: 21300000, guid: c7ea7c6bb5bbf11479092850b5e20393, type: 3}
+    _titleColor: {r: 0.73333335, g: 0.5686275, b: 0, a: 1}
+  - _wheelType: 1
+    _baseSprite: {fileID: 21300000, guid: c9dcc7c6d0b80db479ea9dd89e28b002, type: 3}
+    _indicatorSprite: {fileID: 21300000, guid: 0cd4ca5aa856f3049b90faff8debfd72, type: 3}
+    _titleColor: {r: 0.4901961, g: 0.48627454, b: 0.4901961, a: 1}
+  - _wheelType: 2
+    _baseSprite: {fileID: 21300000, guid: 46940135a829ffc46a3db55ebbbdc1c9, type: 3}
+    _indicatorSprite: {fileID: 21300000, guid: bcfc1905db79c0e408778af1e0abe7d3, type: 3}
+    _titleColor: {r: 0.58431375, g: 0.34117648, b: 0.1137255, a: 1}
