@@ -2,20 +2,23 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RewardItemView : MonoBehaviour
+namespace CardGame.Rewards.View
 {
-    [SerializeField] private RewardConfigSO rewardConfig;
-    [SerializeField] private Image icon;
-    [SerializeField] private TextMeshProUGUI amountText;
+    public class RewardItemView : MonoBehaviour
+    {
+        [SerializeField] private RewardConfigSO rewardConfig;
+        [SerializeField] private Image icon;
+        [SerializeField] private TextMeshProUGUI amountText;
 
-    public void Initialize(Reward reward) {
-        var config = rewardConfig.GetConfig(reward.RewardType);
-        icon.sprite = config.IconSprite;
+        public void Initialize(Reward reward) {
+            var config = rewardConfig.GetConfig(reward.RewardType);
+            icon.sprite = config.IconSprite;
 
-        SetAmount(reward.Amount);
-    }
+            SetAmount(reward.Amount);
+        }
 
-    public void SetAmount(int amount) {
-        amountText.text = amount.ToString();
+        public void SetAmount(int amount) {
+            amountText.text = amount.ToString();
+        }
     }
 }

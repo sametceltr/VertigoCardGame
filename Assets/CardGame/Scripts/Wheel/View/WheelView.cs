@@ -3,98 +3,101 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WheelView : MonoBehaviour, IWheelView
+namespace CardGame.Wheel.View
 {
-    [Header("Visual References")]
-    [SerializeField] private WheelConfigSO wheelConfig;
-    [SerializeField] private TextMeshProUGUI titleText;
-    [SerializeField] private Image baseImage;
-    [SerializeField] private Image indicatorImage;
-    [SerializeField] private SliceView[] rewardSlices;
+    public class WheelView : MonoBehaviour, IWheelView
+    {
+        [Header("Visual References")]
+        [SerializeField] private WheelConfigSO wheelConfig;
+        [SerializeField] private TextMeshProUGUI titleText;
+        [SerializeField] private Image baseImage;
+        [SerializeField] private Image indicatorImage;
+        [SerializeField] private SliceView[] rewardSlices;
 
-    [Header("Dependencies")]
-    [SerializeField] private Button spinButton;
+        [Header("Dependencies")]
+        [SerializeField] private Button spinButton;
 
-    private WheelStateMachine stateMachine;
-    private WheelType currentWheelType;
-    private Reward[] currentRewards;
+        private WheelStateMachine stateMachine;
+        private WheelType currentWheelType;
+        private Reward[] currentRewards;
 
-    private void Awake() {
-        var spinStrategy = new RandomSpinStrategy(this);
-        stateMachine = new WheelStateMachine(this, spinStrategy);
-    }
-
-    private void OnEnable() {
-        spinButton.onClick.AddListener(OnSpinButtonClicked);
-        GameEvents.OnReviveRequested += GameEvents.ZoneLevelUp;
-    }
-
-    private void OnDisable() {
-        spinButton.onClick.RemoveAllListeners();
-        GameEvents.OnReviveRequested -= GameEvents.ZoneLevelUp;
-    }
-
-    private void OnSpinButtonClicked() {
-        stateMachine.RequestSpin();
-    }
-
-    public void Configure(WheelType wheelType, Reward[] rewards) {
-        currentWheelType = wheelType;
-        currentRewards = rewards;
-
-        UpdateVisuals();
-        UpdateSlices();
-    }
-
-    private void UpdateVisuals() {
-        var config = wheelConfig.GetConfig(currentWheelType);
-        if (config != null) {
-            baseImage.sprite = config.BaseSprite;
-            indicatorImage.sprite = config.IndicatorSprite;
-            titleText.text = $"{currentWheelType} SPIN";
-            titleText.color = config.TitleColor;
+        private void Awake() {
+            var spinStrategy = new RandomSpinStrategy(this);
+            stateMachine = new WheelStateMachine(this, spinStrategy);
         }
-    }
 
-    private void UpdateSlices() {
-        if (currentRewards == null || rewardSlices == null) return;
+        private void OnEnable() {
+            spinButton.onClick.AddListener(OnSpinButtonClicked);
+            GameEvents.OnReviveRequested += GameEvents.ZoneLevelUp;
+        }
 
-        int minLength = Mathf.Min(currentRewards.Length, rewardSlices.Length);
-        for (int i = 0; i < minLength; i++) {
-            if (rewardSlices[i] != null) {
-                rewardSlices[i].UpdateSlice(currentRewards[i]);
+        private void OnDisable() {
+            spinButton.onClick.RemoveAllListeners();
+            GameEvents.OnReviveRequested -= GameEvents.ZoneLevelUp;
+        }
+
+        private void OnSpinButtonClicked() {
+            stateMachine.RequestSpin();
+        }
+
+        public void Configure(WheelType wheelType, Reward[] rewards) {
+            currentWheelType = wheelType;
+            currentRewards = rewards;
+
+            UpdateVisuals();
+            UpdateSlices();
+        }
+
+        private void UpdateVisuals() {
+            var config = wheelConfig.GetConfig(currentWheelType);
+            if (config != null) {
+                baseImage.sprite = config.BaseSprite;
+                indicatorImage.sprite = config.IndicatorSprite;
+                titleText.text = $"{currentWheelType} SPIN";
+                titleText.color = config.TitleColor;
             }
         }
-    }
 
-    public void SetSpinButtonInteractable(bool interactable) {
-        spinButton.interactable = interactable;
-    }
+        private void UpdateSlices() {
+            if (currentRewards == null || rewardSlices == null) return;
 
-    public void AnimateSpin(SpinResult result, System.Action onComplete) {
-        GameEvents.SpinStarted();
-
-        var targetRotation = new Vector3(0, 0, result.TargetRotation);
-
-        baseImage.transform
-            .DORotate(targetRotation, result.Duration, RotateMode.FastBeyond360)
-            .SetEase(Ease.OutQuart)
-            .OnComplete(() => {
-                baseImage.transform.eulerAngles = Vector3.zero;
-                GameEvents.SpinCompleted(result.Reward);
-                onComplete?.Invoke();
-            });
-    }
-
-    public void ProcessReward(Reward reward) {
-        GameEvents.RewardAwarded(reward);
-
-        if (reward.RewardType == RewardType.BOMB) {
-            GameEvents.BombHit();
-        } else {
-            GameEvents.ZoneLevelUp();
+            int minLength = Mathf.Min(currentRewards.Length, rewardSlices.Length);
+            for (int i = 0; i < minLength; i++) {
+                if (rewardSlices[i] != null) {
+                    rewardSlices[i].UpdateSlice(currentRewards[i]);
+                }
+            }
         }
-    }
 
-    public Reward[] GetCurrentRewards() => currentRewards;
+        public void SetSpinButtonInteractable(bool interactable) {
+            spinButton.interactable = interactable;
+        }
+
+        public void AnimateSpin(SpinResult result, System.Action onComplete) {
+            GameEvents.SpinStarted();
+
+            var targetRotation = new Vector3(0, 0, result.TargetRotation);
+
+            baseImage.transform
+                .DORotate(targetRotation, result.Duration, RotateMode.FastBeyond360)
+                .SetEase(Ease.OutQuart)
+                .OnComplete(() => {
+                    baseImage.transform.eulerAngles = Vector3.zero;
+                    GameEvents.SpinCompleted(result.Reward);
+                    onComplete?.Invoke();
+                });
+        }
+
+        public void ProcessReward(Reward reward) {
+            GameEvents.RewardAwarded(reward);
+
+            if (reward.RewardType == RewardType.BOMB) {
+                GameEvents.BombHit();
+            } else {
+                GameEvents.ZoneLevelUp();
+            }
+        }
+
+        public Reward[] GetCurrentRewards() => currentRewards;
+    }
 }

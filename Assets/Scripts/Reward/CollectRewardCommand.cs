@@ -1,3 +1,5 @@
+using CardGame.Rewards;
+
 public class CollectRewardCommand : IRewardCommand
 {
     private readonly RewardInventory inventory;

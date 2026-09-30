@@ -1,3 +1,4 @@
+using CardGame.Run.View;
 using UnityEngine;
 
 public class BombMenuController : MonoBehaviour

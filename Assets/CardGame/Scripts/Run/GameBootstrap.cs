@@ -1,8 +1,11 @@
 using UnityEngine;
 
-public class GameBootstrap : MonoBehaviour
+namespace CardGame.Run
 {
-    private void OnDestroy() {
-        GameEvents.ClearAllEvents();
+    public class GameBootstrap : MonoBehaviour
+    {
+        private void OnDestroy() {
+            GameEvents.ClearAllEvents();
+        }
     }
 }

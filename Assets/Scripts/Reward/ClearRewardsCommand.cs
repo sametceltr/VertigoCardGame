@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CardGame.Rewards;
 
 public class ClearRewardsCommand : IRewardCommand
 {

@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using CardGame.Rewards;
+using CardGame.Rewards.View;
 using UnityEngine;
 
 public class RewardController : MonoBehaviour

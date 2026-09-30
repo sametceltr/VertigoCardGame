@@ -1,4 +1,6 @@
 using System.Collections;
+using CardGame.Wheel.View;
+using CardGame.Zones.View;
 using UnityEngine;
 
 public class ZoneController : MonoBehaviour

@@ -1,6 +1,9 @@
-public enum ZoneType
+namespace CardGame.Zones
 {
-    Normal,
-    Safe,
-    Super
+    public enum ZoneType
+    {
+        Normal,
+        Safe,
+        Super
+    }
 }

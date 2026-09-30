@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using CardGame.Zones;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ZoneConfigSO", menuName = "Custom/ZoneConfigSO")]

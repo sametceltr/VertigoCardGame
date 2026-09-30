@@ -1,45 +1,48 @@
 using System.Collections.Generic;
 
-public class RewardInventory
+namespace CardGame.Rewards
 {
-    private readonly Dictionary<RewardType, int> rewardCounts = new();
+    public class RewardInventory
+    {
+        private readonly Dictionary<RewardType, int> rewardCounts = new();
 
-    public void AddReward(Reward reward) {
-        if (reward.RewardType == RewardType.BOMB) return;
+        public void AddReward(Reward reward) {
+            if (reward.RewardType == RewardType.BOMB) return;
 
-        if (rewardCounts.ContainsKey(reward.RewardType)) {
-            rewardCounts[reward.RewardType] += reward.Amount;
-        } else {
-            rewardCounts[reward.RewardType] = reward.Amount;
+            if (rewardCounts.ContainsKey(reward.RewardType)) {
+                rewardCounts[reward.RewardType] += reward.Amount;
+            } else {
+                rewardCounts[reward.RewardType] = reward.Amount;
+            }
         }
-    }
 
-    public void RemoveReward(Reward reward) {
-        if (!rewardCounts.ContainsKey(reward.RewardType)) return;
+        public void RemoveReward(Reward reward) {
+            if (!rewardCounts.ContainsKey(reward.RewardType)) return;
 
-        rewardCounts[reward.RewardType] -= reward.Amount;
+            rewardCounts[reward.RewardType] -= reward.Amount;
 
-        if (rewardCounts[reward.RewardType] <= 0) {
-            rewardCounts.Remove(reward.RewardType);
+            if (rewardCounts[reward.RewardType] <= 0) {
+                rewardCounts.Remove(reward.RewardType);
+            }
         }
-    }
 
-    public void Clear() {
-        rewardCounts.Clear();
-    }
-
-    public Dictionary<RewardType, int> GetSnapshot() {
-        return new Dictionary<RewardType, int>(rewardCounts);
-    }
-
-    public void RestoreSnapshot(Dictionary<RewardType, int> snapshot) {
-        rewardCounts.Clear();
-        foreach (var kvp in snapshot) {
-            rewardCounts[kvp.Key] = kvp.Value;
+        public void Clear() {
+            rewardCounts.Clear();
         }
-    }
 
-    public int GetRewardAmount(RewardType type) {
-        return rewardCounts.TryGetValue(type, out int amount) ? amount : 0;
+        public Dictionary<RewardType, int> GetSnapshot() {
+            return new Dictionary<RewardType, int>(rewardCounts);
+        }
+
+        public void RestoreSnapshot(Dictionary<RewardType, int> snapshot) {
+            rewardCounts.Clear();
+            foreach (var kvp in snapshot) {
+                rewardCounts[kvp.Key] = kvp.Value;
+            }
+        }
+
+        public int GetRewardAmount(RewardType type) {
+            return rewardCounts.TryGetValue(type, out int amount) ? amount : 0;
+        }
     }
 }
