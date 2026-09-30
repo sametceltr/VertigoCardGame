@@ -1,6 +1,6 @@
 public enum ZoneType
 {
-    NORMAL,
-    SAFE,
-    SUPER
+    Normal,
+    Safe,
+    Super
 }

@@ -95,7 +95,7 @@ public class ZoneRNG
 
         Reward[] slices = new Reward[sliceCount];
         float realTotalValue = 0;
-        int bombIndex = zone.Type == ZoneType.NORMAL ? rng.Next(sliceCount): sliceCount;
+        int bombIndex = zone.Type == ZoneType.Normal ? rng.Next(sliceCount): sliceCount;
 
         for (int i = 0; i < sliceCount; i++) {
             if (i == bombIndex) {
@@ -124,7 +124,7 @@ public class ZoneRNG
             );
         }
 
-        int bombProbabilityIndex = zone.Type == ZoneType.NORMAL ? rng.Next(sliceCount) : -1;
+        int bombProbabilityIndex = zone.Type == ZoneType.Normal ? rng.Next(sliceCount) : -1;
 
         while (bombProbabilityIndex == bombIndex) {
             bombProbabilityIndex = rng.Next(sliceCount);

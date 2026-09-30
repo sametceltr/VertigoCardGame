@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class RewardSlice : MonoBehaviour
 {
-    [SerializeField] RewardConfigSO rewardSO;
-    [SerializeField] Image rewardIcon;
-    [SerializeField] ParentFitter rewardIconFitter;
-    [SerializeField] TextMeshProUGUI rewardAmount;
+    [SerializeField] private RewardConfigSO rewardSO;
+    [SerializeField] private Image rewardIcon;
+    [SerializeField] private ParentFitter rewardIconFitter;
+    [SerializeField] private TextMeshProUGUI rewardAmount;
     private Reward _reward;
 
     public void UpdateSlice(Reward reward) {

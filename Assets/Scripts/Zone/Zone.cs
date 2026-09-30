@@ -24,16 +24,16 @@ public class Zone
 
     private void DecideTypes(int zoneIndex) {
         if (zoneIndex % 30 == 0) {
-            _zoneType = ZoneType.SUPER;
+            _zoneType = ZoneType.Super;
             _wheelType = WheelType.GOLDEN;
             return;
         }
         else if (zoneIndex % 5 == 0) {
-            _zoneType = ZoneType.SAFE;
+            _zoneType = ZoneType.Safe;
             _wheelType = WheelType.SILVER;
             return;
         }
-        _zoneType = ZoneType.NORMAL;
+        _zoneType = ZoneType.Normal;
         _wheelType = WheelType.BRONZE;
     }
 
