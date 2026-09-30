@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RewardController : MonoBehaviour
 {
-    [SerializeField] private RewardBarView rewardBarView;
+    [SerializeField] private RewardPanelView rewardBarView;
 
     private RewardInventory inventory;
     private Stack<IRewardCommand> commandHistory = new();

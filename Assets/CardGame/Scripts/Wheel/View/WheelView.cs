@@ -10,7 +10,7 @@ public class WheelView : MonoBehaviour, IWheelView
     [SerializeField] private TextMeshProUGUI titleText;
     [SerializeField] private Image baseImage;
     [SerializeField] private Image indicatorImage;
-    [SerializeField] private RewardSlice[] rewardSlices;
+    [SerializeField] private SliceView[] rewardSlices;
 
     [Header("Dependencies")]
     [SerializeField] private Button spinButton;

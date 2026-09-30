@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RewardSlice : MonoBehaviour
+public class SliceView : MonoBehaviour
 {
     [SerializeField] private RewardConfigSO rewardSO;
     [SerializeField] private Image rewardIcon;

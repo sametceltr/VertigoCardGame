@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BombMenuView : MonoBehaviour
+public class BombPopupView : MonoBehaviour
 {
     [Header("Buttons")]
     [SerializeField] private Button giveUpButton;

@@ -1,11 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RewardBarView : MonoBehaviour
+public class RewardPanelView : MonoBehaviour
 {
-    [SerializeField] private RewardBarItem rewardItemPrefab;
+    [SerializeField] private RewardItemView rewardItemPrefab;
 
-    private readonly Dictionary<RewardType, RewardBarItem> rewardItems = new();
+    private readonly Dictionary<RewardType, RewardItemView> rewardItems = new();
 
     public void UpdateReward(RewardType rewardType, int totalAmount) {
         if (rewardItems.TryGetValue(rewardType, out var item)) {

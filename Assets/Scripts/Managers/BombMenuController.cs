@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class BombMenuController : MonoBehaviour
 {
-    [SerializeField] private BombMenuView bombMenuPrefab;
+    [SerializeField] private BombPopupView bombMenuPrefab;
     [SerializeField] private Canvas canvas;
 
-    private BombMenuView currentBombMenu;
+    private BombPopupView currentBombMenu;
 
     private void OnEnable() {
         GameEvents.OnBombHit += ShowBombMenu;

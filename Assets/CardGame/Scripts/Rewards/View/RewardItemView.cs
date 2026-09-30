@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RewardBarItem : MonoBehaviour
+public class RewardItemView : MonoBehaviour
 {
     [SerializeField] private RewardConfigSO rewardConfig;
     [SerializeField] private Image icon;

@@ -5,10 +5,10 @@ public class ServiceLocator : MonoBehaviour
 {
     private static ServiceLocator _instance;
 
-    [SerializeField] private EconomyService economyService;
+    [SerializeField] private Wallet economyService;
     [SerializeField] private GameStateService gameStateService;
 
-    public static EconomyService Economy => _instance.economyService;
+    public static Wallet Economy => _instance.economyService;
     public static GameStateService GameState => _instance.gameStateService;
 
     private void Awake() {

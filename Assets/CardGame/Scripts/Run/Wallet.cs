@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [System.Serializable]
-public class EconomyService
+public class Wallet
 {
     [SerializeField] private int startingCoins = 100;
     [SerializeField] private int baseReviveCost = 25;
