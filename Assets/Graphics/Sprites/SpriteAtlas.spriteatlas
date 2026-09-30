@@ -86,20 +86,17 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 150c5eadb03c8c043bfe8208120bda67, type: 3}
     - {fileID: 2800000, guid: a7ae2f14ed0368443b7f08338181f355, type: 3}
     - {fileID: 2800000, guid: 9a42fe06ebb079b4ca99f65e434aa7ee, type: 3}
-    - {fileID: 2800000, guid: 95ab845ffe3fc884b8df56bb109069fd, type: 3}
+    - {fileID: 2800000, guid: c9dcc7c6d0b80db479ea9dd89e28b002, type: 3}
     - {fileID: 2800000, guid: eac665d720ee087408663c5b24ffd25f, type: 3}
     - {fileID: 2800000, guid: 0f6b23b158e448544a4def7701bc0d58, type: 3}
     - {fileID: 2800000, guid: b001715fa009c1542af82bcaca257193, type: 3}
     - {fileID: 2800000, guid: d72d422b5285ac24c984f8863ed6a434, type: 3}
-    - {fileID: 2800000, guid: 9eb4e9808cda7ca478470bac40f8f44b, type: 3}
-    - {fileID: 2800000, guid: a06d0efec8bd1fe4bac42762936ca77a, type: 3}
+    - {fileID: 2800000, guid: c7ea7c6bb5bbf11479092850b5e20393, type: 3}
+    - {fileID: 2800000, guid: 0d091380fcd5c9f45842ccba64471ab6, type: 3}
     - {fileID: 2800000, guid: 0cd4ca5aa856f3049b90faff8debfd72, type: 3}
     - {fileID: 2800000, guid: 46940135a829ffc46a3db55ebbbdc1c9, type: 3}
     - {fileID: 2800000, guid: bcfc1905db79c0e408778af1e0abe7d3, type: 3}
     - {fileID: 2800000, guid: 290af6ddd83f3e34c8ed04dfc98deabb, type: 3}
-    - {fileID: 2800000, guid: 0d091380fcd5c9f45842ccba64471ab6, type: 3}
-    - {fileID: 2800000, guid: c7ea7c6bb5bbf11479092850b5e20393, type: 3}
-    - {fileID: 2800000, guid: c9dcc7c6d0b80db479ea9dd89e28b002, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -107,7 +104,6 @@ SpriteAtlas:
   m_PackedSprites:
   - {fileID: 21300000, guid: 9690fd201b8f19346b6f168b24b8ea1f, type: 3}
   - {fileID: 21300000, guid: 0d091380fcd5c9f45842ccba64471ab6, type: 3}
-  - {fileID: 21300000, guid: 9eb4e9808cda7ca478470bac40f8f44b, type: 3}
   - {fileID: 21300000, guid: 236260d0ddd40fa4b90cef9cb0c8703f, type: 3}
   - {fileID: 21300000, guid: be6ff47158e6ac64285c59236ef38d54, type: 3}
   - {fileID: 21300000, guid: 47a518a1264e9354889c2ec76fb2cd1e, type: 3}
@@ -156,15 +152,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 290af6ddd83f3e34c8ed04dfc98deabb, type: 3}
   - {fileID: 21300000, guid: a27d3e1e00e1c834bbf54f1a9b88f29c, type: 3}
   - {fileID: 21300000, guid: 84f2c04e74c9ad14890fb528d7c5b5c1, type: 3}
-  - {fileID: 21300000, guid: a06d0efec8bd1fe4bac42762936ca77a, type: 3}
   - {fileID: 21300000, guid: 57c0e32fa7c63634db533ce69627f786, type: 3}
   - {fileID: 21300000, guid: b001715fa009c1542af82bcaca257193, type: 3}
-  - {fileID: 21300000, guid: 95ab845ffe3fc884b8df56bb109069fd, type: 3}
   - {fileID: 21300000, guid: 175e218fbcebd0447b178245effe4cee, type: 3}
   m_PackedSpriteNamesToIndex:
   - UI_icon_chest_big_nolight
   - ui_spin_golden_base
-  - UI_Icons_Submachine_Points
   - UI_icon_gold
   - UI_icon_chest_silver_nolight
   - ui_icon_aviator_glasses_easter
@@ -213,10 +206,8 @@ SpriteAtlas:
   - ui_spin_generic_button
   - UI_icon_chest_gold_nolight
   - UI_Icon_Renders_tier3_smg
-  - UI_Icons_Vest_Points
   - ui_card_panel_zone_bg
   - UI_Icons_SMG_Points
-  - UI_Icons_Pistol_Points_
   - UI_icon_chest_super_nolight
   m_RenderDataMap: {}
   m_Tag: SpriteAtlas
