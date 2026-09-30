@@ -26,22 +26,16 @@ public class WheelView : MonoBehaviour, IWheelView
 
     private void OnEnable() {
         spinButton.onClick.AddListener(OnSpinButtonClicked);
-        GameEvents.OnZoneChanged += OnZoneChanged;
         GameEvents.OnReviveRequested += GameEvents.ZoneLevelUp;
     }
 
     private void OnDisable() {
         spinButton.onClick.RemoveAllListeners();
-        GameEvents.OnZoneChanged -= OnZoneChanged;
         GameEvents.OnReviveRequested -= GameEvents.ZoneLevelUp;
     }
 
     private void OnSpinButtonClicked() {
         stateMachine.RequestSpin();
-    }
-
-    private void OnZoneChanged(int zoneIndex) { 
-    
     }
 
     public void Configure(WheelType wheelType, Reward[] rewards) {
@@ -103,5 +97,4 @@ public class WheelView : MonoBehaviour, IWheelView
     }
 
     public Reward[] GetCurrentRewards() => currentRewards;
-    public WheelType GetCurrentWheelType() => currentWheelType;
 }

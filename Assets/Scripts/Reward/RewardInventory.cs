@@ -4,8 +4,6 @@ public class RewardInventory
 {
     private readonly Dictionary<RewardType, int> rewardCounts = new();
 
-    public IReadOnlyDictionary<RewardType, int> RewardCounts => rewardCounts;
-
     public void AddReward(Reward reward) {
         if (reward.RewardType == RewardType.BOMB) return;
 
