@@ -148,7 +148,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c35639eff914244b284fa99babd055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zoneConfigs: {fileID: 11400000, guid: 21d585a394b546d4a8c7b2e3ced7d2a4, type: 2}
-  zoneText: {fileID: 9158948102803333719}
-  rectTransform: {fileID: 9158948102803333716}
-  indicatorBackground: {fileID: 0}
+  _zoneText: {fileID: 9158948102803333719}
+  _rectTransform: {fileID: 9158948102803333716}

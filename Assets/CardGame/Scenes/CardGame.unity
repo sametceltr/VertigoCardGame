@@ -1242,6 +1242,7 @@ MonoBehaviour:
   _visuals: {fileID: 11400000, guid: fb624effa7d6a264e82b46a5a81d55e0, type: 2}
   _rules: {fileID: 11400000, guid: 917d20a0e3e46cb479580fa50950d54d, type: 2}
   _wheelView: {fileID: 704258438}
+  _zoneBarView: {fileID: 931661773}
 --- !u!4 &548828818
 Transform:
   m_ObjectHideFlags: 0
@@ -2316,11 +2317,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b2ce0372fee9c4eb0cf73db11a3a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  content: {fileID: 782555781}
-  indicatorRect: {fileID: 761646168}
-  indicatorBackground: {fileID: 761646169}
-  zoneItemPrefab: {fileID: 817001499591505033, guid: c59368f45f1eeb945adfff67e88353b2, type: 3}
-  transitionDuration: 0.35
+  _content: {fileID: 782555781}
+  _currentZoneBox: {fileID: 761646169}
+  _zoneItemPrefab: {fileID: 817001499591505033, guid: c59368f45f1eeb945adfff67e88353b2, type: 3}
+  _transitionDuration: 0.35
+  _transitionEase: 9
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
