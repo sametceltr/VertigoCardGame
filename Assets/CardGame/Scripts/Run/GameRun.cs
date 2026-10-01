@@ -56,7 +56,7 @@ namespace CardGame.Run
             if (State != RunState.InMenu) return;
 
             _reviveOptions.ResetForNewRun();
-            EnterZone(1);
+            EnterZone(ZoneProgressionSO.FirstZone);
         }
 
         public void Spin() {

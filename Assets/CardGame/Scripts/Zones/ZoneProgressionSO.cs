@@ -8,6 +8,8 @@ namespace CardGame.Zones
     [CreateAssetMenu(fileName = "ZoneProgression", menuName = "CardGame/Zone Progression")]
     public class ZoneProgressionSO : ScriptableObject
     {
+        public const int FirstZone = 1;
+
         [Header("Zones")]
         [SerializeField] private int _maxZone;
         [SerializeField] private int _safeZoneInterval;
@@ -92,7 +94,7 @@ namespace CardGame.Zones
             var seenZones = new HashSet<int>();
             foreach (var zoneOverride in _overrides) {
                 int zone = zoneOverride.Zone;
-                if (zone < 1 || zone > _maxZone) Debug.LogWarning($"{name}: override for zone {zone} is outside zones 1–{_maxZone}.", this);
+                if (zone < FirstZone || zone > _maxZone) Debug.LogWarning($"{name}: override for zone {zone} is outside zones {FirstZone}–{_maxZone}.", this);
                 if (!seenZones.Add(zone)) Debug.LogWarning($"{name}: zone {zone} is overridden more than once.", this);
 
                 var zoneType = GetZoneType(zone);
