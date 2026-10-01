@@ -1064,7 +1064,6 @@ GameObject:
   - component: {fileID: 517659389}
   - component: {fileID: 517659390}
   - component: {fileID: 517659392}
-  - component: {fileID: 517659391}
   m_Layer: 5
   m_Name: ui_container_reward_items
   m_TagString: Untagged
@@ -1118,19 +1117,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &517659391
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 517659388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f82403ca7633e944d8240d1697d52806, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rewardBarView: {fileID: 517659392}
 --- !u!114 &517659392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1279,11 +1265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d814533a8b51246b792ef5141aab5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serviceLocator: {fileID: 1181438019}
-  zoneController: {fileID: 931661772}
-  rewardController: {fileID: 517659391}
-  bombMenuController: {fileID: 1048688603}
-  uiController: {fileID: 1708508430}
 --- !u!4 &548828818
 Transform:
   m_ObjectHideFlags: 0
@@ -1297,7 +1278,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &651053429
 PrefabInstance:
@@ -2248,7 +2229,6 @@ GameObject:
   m_Component:
   - component: {fileID: 931661771}
   - component: {fileID: 931661773}
-  - component: {fileID: 931661772}
   m_Layer: 5
   m_Name: ui_panel_content
   m_TagString: Untagged
@@ -2279,104 +2259,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &931661772
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 931661770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5dbee883c3bcce41a92e51fcdb6b201, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoneBarView: {fileID: 931661773}
-  wheelView: {fileID: 539312746}
-  zoneRNG:
-    rewardSO: {fileID: 11400000, guid: 946b2f6350852834fab64357627b6792, type: 2}
-    zoneValueCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0.01
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    sliceValueProbablityCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0.2539149
-      - serializedVersion: 3
-        time: 0.6090229
-        value: 0.4455087
-        inSlope: 1.8331368
-        outSlope: 1.8331368
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.7727084
-        value: 0.9676852
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.3873169
-      - serializedVersion: 3
-        time: 0.8392041
-        value: 0.5863607
-        inSlope: -11.80016
-        outSlope: -11.80016
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.17203897
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    maxZone: 60
-    zoneValueScale: 4000
-    sliceValueScale: 10
-    integrationSteps: 100
-  predefinedZones:
-  - {fileID: 11400000, guid: 9dfe17830183e0543a759042eb84fbd7, type: 2}
-  - {fileID: 11400000, guid: 8493cffa08353744f90fb9d411871417, type: 2}
 --- !u!114 &931661773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2782,52 +2664,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988561882}
   m_CullTransparentMesh: 1
---- !u!1 &1048688602
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1048688604}
-  - component: {fileID: 1048688603}
-  m_Layer: 0
-  m_Name: BombMenuController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1048688603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048688602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92d8e9d5af66562439ea051f1ae0c056, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bombMenuPrefab: {fileID: 7420980402363609644, guid: 48345bdaf65849c45a4ac1c399630287, type: 3}
-  canvas: {fileID: 855169138}
---- !u!4 &1048688604
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1048688602}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 767.76215, y: 444.0113, z: -0.088292584}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1110844761
 GameObject:
   m_ObjectHideFlags: 0
@@ -3087,55 +2923,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174075112}
   m_CullTransparentMesh: 1
---- !u!1 &1181438016
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1181438018}
-  - component: {fileID: 1181438019}
-  m_Layer: 0
-  m_Name: ServiceLocator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1181438018
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1181438016}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 499.76328, y: 260.26694, z: -0.17658398}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1181438019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1181438016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd624a7e11b7ea94790e1fcdb11840c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  economyService:
-    startingCoins: 500
-    baseReviveCost: 25
-  gameStateService:
-    maxLevel: 60
 --- !u!1 &1182641237
 GameObject:
   m_ObjectHideFlags: 0
@@ -3922,52 +3709,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626254661}
   m_CullTransparentMesh: 1
---- !u!1 &1708508427
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1708508429}
-  - component: {fileID: 1708508430}
-  m_Layer: 0
-  m_Name: UIController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1708508429
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708508427}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 767.76215, y: 444.0113, z: -0.088292584}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1708508430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1708508427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 129665908ea68284a96efdc9bf0aed7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coinBalanceText: {fileID: 4209354024013240583}
-  spinButton: {fileID: 511231320}
 --- !u!1 &1750108096
 GameObject:
   m_ObjectHideFlags: 0
