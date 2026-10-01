@@ -1,23 +1,18 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace CardGame.UI
 {
-    #if UNITY_EDITOR
     [ExecuteAlways]
-    #endif
     [RequireComponent(typeof(Image))]
     public class ParentFitter : AspectRatioFitter
     {
-        private Image image;
-        private RectTransform rectTransform;
-        private float nativeRatio;
+        private Image _image;
+        private float _nativeRatio;
 
         protected override void Awake() {
             base.Awake();
-            image = GetComponent<Image>();
-            rectTransform = GetComponent<RectTransform>();
+            _image = GetComponent<Image>();
             aspectMode = AspectMode.FitInParent;
         }
 
@@ -30,20 +25,16 @@ namespace CardGame.UI
         protected override void OnValidate() {
             base.OnValidate();
             if (aspectMode != AspectMode.FitInParent) aspectMode = AspectMode.FitInParent;
-            if (aspectRatio != nativeRatio) CalculateAspectRatio();
+            if (aspectRatio != _nativeRatio) CalculateAspectRatio();
         }
     #endif
 
         public void CalculateAspectRatio() {
-            if (image == null) return;
-            if (image.sprite == null) return;
-            float width = image.sprite.rect.width;
-            float height = image.sprite.rect.height;
+            if (_image == null || _image.sprite == null) return;
 
-            nativeRatio = width / height;
-            aspectRatio = nativeRatio;
-
-            this.SetDirty();
+            var spriteRect = _image.sprite.rect;
+            _nativeRatio = spriteRect.width / spriteRect.height;
+            aspectRatio = _nativeRatio;
         }
     }
 }
