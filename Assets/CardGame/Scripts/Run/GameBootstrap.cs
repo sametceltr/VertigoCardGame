@@ -23,6 +23,7 @@ namespace CardGame.Run
         [SerializeField] private RewardPanelView _rewardPanelView;
         [SerializeField] private BombPopupView _bombPopupView;
         [SerializeField] private BalanceBarView _balanceBarView;
+        [SerializeField] private MenuView _menuView;
 
         private GameRun _run;
 
@@ -37,16 +38,17 @@ namespace CardGame.Run
             _rewardPanelView.Initialize(_run);
             _bombPopupView.Initialize(_run);
             _balanceBarView.Initialize(_run, wallet);
+            _menuView.Initialize(_run);
         }
 
         private void Start() {
-            _run.StartNewRun();
+            _run.EnterMenu();
         }
 
     #if UNITY_EDITOR
         private void OnValidate() {
-            if (_progression == null || _visuals == null || _rules == null
-                || _wheelView == null || _zoneBarView == null || _rewardPanelView == null || _bombPopupView == null || _balanceBarView == null) {
+            if (_progression == null || _visuals == null || _rules == null || _wheelView == null || _zoneBarView == null
+                || _rewardPanelView == null || _bombPopupView == null || _balanceBarView == null || _menuView == null) {
                 Debug.LogWarning($"{name}: a data asset or view reference is missing.", this);
                 return;
             }

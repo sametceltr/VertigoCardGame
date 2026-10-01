@@ -42,9 +42,13 @@ namespace CardGame.Run
             _revivePolicy = revivePolicy;
         }
 
+        public void EnterMenu() {
+            SetState(RunState.InMenu);
+        }
+
         public void StartNewRun() {
-            _collectedRewards.Clear();
-            RewardsCleared?.Invoke();
+            if (State != RunState.InMenu) return;
+
             _reviveCount = 0;
             EnterZone(1);
         }
@@ -68,7 +72,7 @@ namespace CardGame.Run
 
             Collect(slice);
             if (_zone >= _progression.MaxZone) {
-                StartNewRun();
+                EndRun();
                 return;
             }
 
@@ -87,7 +91,13 @@ namespace CardGame.Run
         public void GiveUp() {
             if (State != RunState.BombHit) return;
 
-            StartNewRun();
+            EndRun();
+        }
+
+        private void EndRun() {
+            _collectedRewards.Clear();
+            RewardsCleared?.Invoke();
+            EnterMenu();
         }
 
         private void EnterZone(int zone) {

@@ -72,8 +72,12 @@ namespace CardGame.Wheel.View
         }
 
         private void OnStateChanged(RunState state) {
-            _spinButton.interactable = state == RunState.Ready;
+            bool isReady = state == RunState.Ready;
+            _spinButton.interactable = isReady;
+            if (isReady) ShowBombState();
+        }
 
+        private void ShowBombState() {
             float bombAlpha = _run.IsBombDisarmed ? _disarmedBombAlpha : SliceView.OpaqueAlpha;
             for (int i = 0; i < _currentSlices.Count; i++) {
                 if (_currentSlices[i].Type == SliceType.Bomb) _slices[i].SetAlpha(bombAlpha);

@@ -25,7 +25,7 @@ namespace CardGame.Run.View
         }
 
         private void OnStateChanged(RunState state) {
-            gameObject.SetActive(state == RunState.BombHit);
+            gameObject.SetActive(state == RunState.InMenu || state == RunState.BombHit);
         }
     }
 }
