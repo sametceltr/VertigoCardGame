@@ -1,5 +1,6 @@
 using System;
 using CardGame.Core.Randomness;
+using CardGame.Rewards.View;
 using CardGame.Wheel;
 using CardGame.Wheel.View;
 using CardGame.Zones;
@@ -18,6 +19,7 @@ namespace CardGame.Run
         [Header("Views")]
         [SerializeField] private WheelView _wheelView;
         [SerializeField] private ZoneBarView _zoneBarView;
+        [SerializeField] private RewardPanelView _rewardPanelView;
 
         private GameRun _run;
 
@@ -29,6 +31,7 @@ namespace CardGame.Run
             _run = new GameRun(_progression, _rules, wheelBuilder, new SpinResolver(random), wallet, new RevivePolicy(_rules));
             _wheelView.Initialize(_run, _visuals);
             _zoneBarView.Initialize(_run, _progression, _visuals);
+            _rewardPanelView.Initialize(_run);
         }
 
         private void Start() {
@@ -37,7 +40,7 @@ namespace CardGame.Run
 
     #if UNITY_EDITOR
         private void OnValidate() {
-            if (_progression == null || _visuals == null || _rules == null || _wheelView == null || _zoneBarView == null) {
+            if (_progression == null || _visuals == null || _rules == null || _wheelView == null || _zoneBarView == null || _rewardPanelView == null) {
                 Debug.LogWarning($"{name}: a data asset or view reference is missing.", this);
                 return;
             }

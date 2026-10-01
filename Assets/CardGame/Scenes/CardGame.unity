@@ -1063,7 +1063,6 @@ GameObject:
   m_Component:
   - component: {fileID: 517659389}
   - component: {fileID: 517659390}
-  - component: {fileID: 517659392}
   m_Layer: 5
   m_Name: ui_container_reward_items
   m_TagString: Untagged
@@ -1117,19 +1116,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &517659392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 517659388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64b2afca10238724e9b70b8cb1e79a9a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rewardItemPrefab: {fileID: 1707593029200008608, guid: 80db6e6e14b4e764686a7c230f100a3f, type: 3}
 --- !u!1 &539312742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,6 +1229,7 @@ MonoBehaviour:
   _rules: {fileID: 11400000, guid: 917d20a0e3e46cb479580fa50950d54d, type: 2}
   _wheelView: {fileID: 704258438}
   _zoneBarView: {fileID: 931661773}
+  _rewardPanelView: {fileID: 1268431907}
 --- !u!4 &548828818
 Transform:
   m_ObjectHideFlags: 0
@@ -3117,6 +3104,7 @@ GameObject:
   - component: {fileID: 1268431904}
   - component: {fileID: 1268431906}
   - component: {fileID: 1268431905}
+  - component: {fileID: 1268431907}
   m_Layer: 5
   m_Name: ui_panel_reward_bar
   m_TagString: Untagged
@@ -3185,6 +3173,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1268431903}
   m_CullTransparentMesh: 1
+--- !u!114 &1268431907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268431903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64b2afca10238724e9b70b8cb1e79a9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _itemContainer: {fileID: 517659389}
+  _itemPrefab: {fileID: 1707593029200008608, guid: 80db6e6e14b4e764686a7c230f100a3f, type: 3}
 --- !u!1 &1282993242
 GameObject:
   m_ObjectHideFlags: 0

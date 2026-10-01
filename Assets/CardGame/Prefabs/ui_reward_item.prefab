@@ -241,9 +241,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a44eec18562fd4a4b8ae28e7e1f1971b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardConfig: {fileID: 11400000, guid: 946b2f6350852834fab64357627b6792, type: 2}
-  icon: {fileID: 3040212632092791524}
-  amountText: {fileID: 6637146643869339798}
+  _icon: {fileID: 3040212632092791524}
+  _iconFitter: {fileID: 393808914803829582}
+  _totalText: {fileID: 6637146643869339798}
 --- !u!1 &7329389123712168496
 GameObject:
   m_ObjectHideFlags: 0

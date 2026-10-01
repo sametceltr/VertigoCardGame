@@ -12,5 +12,9 @@ namespace CardGame.UI
             float thousands = (float)amount / Thousand;
             return "x" + thousands.ToString("0.#", CultureInfo.InvariantCulture) + "K";
         }
+
+        public static string Exact(int amount) {
+            return amount.ToString("N0", CultureInfo.InvariantCulture);
+        }
     }
 }
