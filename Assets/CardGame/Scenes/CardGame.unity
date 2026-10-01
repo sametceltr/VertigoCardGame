@@ -826,7 +826,7 @@ RectTransform:
   - {fileID: 4209354023078400402}
   - {fileID: 4209354024013240582}
   m_Father: {fileID: 855169139}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.85, y: 0.85}
   m_AnchorMax: {x: 0.95, y: 0.95}
@@ -901,11 +901,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 511231319}
-  m_Father: {fileID: 855169139}
-  m_RootOrder: 4
+  m_Father: {fileID: 704258439}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.8, y: 0.425}
-  m_AnchorMax: {x: 0.95, y: 0.575}
+  m_AnchorMin: {x: 0.77777785, y: 0.43333334}
+  m_AnchorMax: {x: 1, y: 0.6333333}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1141,7 +1141,6 @@ GameObject:
   - component: {fileID: 539312743}
   - component: {fileID: 539312744}
   - component: {fileID: 539312745}
-  - component: {fileID: 539312746}
   m_Layer: 5
   m_Name: ui_panel_spin
   m_TagString: Untagged
@@ -1164,11 +1163,11 @@ RectTransform:
   - {fileID: 275066140}
   - {fileID: 1626254662}
   - {fileID: 1414578064}
-  m_Father: {fileID: 855169139}
-  m_RootOrder: 2
+  m_Father: {fileID: 704258439}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.275, y: 0.1}
-  m_AnchorMax: {x: 0.775, y: 0.85}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.7407408, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1210,32 +1209,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &539312746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 539312742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b08d2416da3fe4f4c8340dafa96e5563, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wheelConfig: {fileID: 11400000, guid: 318d7af763813724d98a1501ba236b3a, type: 2}
-  titleText: {fileID: 1626254663}
-  baseImage: {fileID: 869645096}
-  indicatorImage: {fileID: 448883950}
-  rewardSlices:
-  - {fileID: 259040129}
-  - {fileID: 1466738637}
-  - {fileID: 62772010}
-  - {fileID: 1612003555}
-  - {fileID: 2052342277}
-  - {fileID: 651053431}
-  - {fileID: 669553769}
-  - {fileID: 1118506520}
-  spinButton: {fileID: 511231320}
 --- !u!1 &548828816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1265,6 +1238,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40d814533a8b51246b792ef5141aab5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _progression: {fileID: 11400000, guid: c501cba588092d3459bb912d92c87b82, type: 2}
+  _visuals: {fileID: 11400000, guid: fb624effa7d6a264e82b46a5a81d55e0, type: 2}
+  _rules: {fileID: 11400000, guid: 917d20a0e3e46cb479580fa50950d54d, type: 2}
+  _wheelView: {fileID: 704258438}
 --- !u!4 &548828818
 Transform:
   m_ObjectHideFlags: 0
@@ -1554,6 +1531,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe77caa9eb4dad040b6c4170d2dbb277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &704258437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 704258439}
+  - component: {fileID: 704258438}
+  m_Layer: 0
+  m_Name: ui_container_wheel_area
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &704258438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704258437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b08d2416da3fe4f4c8340dafa96e5563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _titleText: {fileID: 1626254663}
+  _baseImage: {fileID: 869645096}
+  _indicatorImage: {fileID: 448883950}
+  _slices:
+  - {fileID: 259040129}
+  - {fileID: 1466738637}
+  - {fileID: 62772010}
+  - {fileID: 1612003555}
+  - {fileID: 2052342277}
+  - {fileID: 651053431}
+  - {fileID: 669553769}
+  - {fileID: 1118506520}
+  _bombIcon: {fileID: 21300000, guid: fd2fc2ab81bbe3b4281c43db7d3638d1, type: 3}
+  _disarmedBombAlpha: 0.4
+  _spinButton: {fileID: 511231320}
+  _spinDuration: 3
+  _extraTurns: 3
+  _spinEase: 12
+--- !u!224 &704258439
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704258437}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 539312743}
+  - {fileID: 466228722}
+  m_Father: {fileID: 855169139}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.275, y: 0.1}
+  m_AnchorMax: {x: 0.95, y: 0.85}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &705002866
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,9 +2169,8 @@ RectTransform:
   m_Children:
   - {fileID: 1182641238}
   - {fileID: 1268431904}
-  - {fileID: 539312743}
+  - {fileID: 704258439}
   - {fileID: 1174075113}
-  - {fileID: 466228722}
   - {fileID: 464465707}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -2275,7 +2320,6 @@ MonoBehaviour:
   indicatorRect: {fileID: 761646168}
   indicatorBackground: {fileID: 761646169}
   zoneItemPrefab: {fileID: 817001499591505033, guid: c59368f45f1eeb945adfff67e88353b2, type: 3}
-  maxLevel: 60
   transitionDuration: 0.35
 --- !u!1 &963194225
 GameObject:
