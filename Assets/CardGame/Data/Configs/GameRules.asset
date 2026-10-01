@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c8edce4115a5442b6e535947eb0053, type: 3}
+  m_Name: GameRules
+  m_EditorClassIdentifier: 
+  _startingBalances:
+  - _currency: {fileID: 11400000, guid: 693c405ebdfdc964799d257ccb9c1c7a, type: 2}
+    _amount: 500
+  _reviveCurrency: {fileID: 11400000, guid: 693c405ebdfdc964799d257ccb9c1c7a, type: 2}
+  _reviveCosts: 19000000320000004b0000007d000000c80000002c010000c2010000bc020000
