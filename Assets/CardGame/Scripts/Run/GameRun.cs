@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using CardGame.Ads;
-using CardGame.Rewards;
 using CardGame.Wheel;
 using CardGame.Zones;
 
@@ -16,7 +15,7 @@ namespace CardGame.Run
         private readonly Wallet _wallet;
         private readonly RevivePolicy _revivePolicy;
         private readonly IAdService _adService;
-        private readonly Dictionary<RewardDefinitionSO, int> _collectedRewards = new Dictionary<RewardDefinitionSO, int>();
+        private readonly CollectedRewards _collectedRewards;
 
         private int _zone;
         private IReadOnlyList<WheelSlice> _slices;
@@ -27,12 +26,9 @@ namespace CardGame.Run
         public event Action<RunState> StateChanged;
         public event Action<ZoneInfo> ZoneChanged;
         public event Action<int> SpinStarted;
-        public event Action<RewardDefinitionSO, int, int> RewardCollected;
-        public event Action RewardsCleared;
 
         public RunState State { get; private set; }
         public bool IsBombDisarmed { get; private set; }
-        public IReadOnlyDictionary<RewardDefinitionSO, int> CollectedRewards => _collectedRewards;
         public int ReviveCost => _revivePolicy.CostFor(_reviveCount);
         public bool CanReviveWithGold => State == RunState.BombHit && _wallet.BalanceOf(_rules.ReviveCurrency) >= ReviveCost;
         public bool CanReviveWithAd => State == RunState.BombHit && !_isAdReviveUsed;
@@ -42,18 +38,19 @@ namespace CardGame.Run
         public ExitOutcome ExitOutcome {
             get {
                 if (CanCollectRewards) return ExitOutcome.CollectRewards;
-                return _collectedRewards.Count > 0 ? ExitOutcome.LoseRewards : ExitOutcome.NoRewards;
+                return _collectedRewards.HasAny ? ExitOutcome.LoseRewards : ExitOutcome.NoRewards;
             }
         }
 
         public GameRun(ZoneProgressionSO progression, GameRulesSO rules, WheelBuilder wheelBuilder, SpinResolver spinResolver,
-            Wallet wallet, RevivePolicy revivePolicy, IAdService adService) {
+            Wallet wallet, RevivePolicy revivePolicy, CollectedRewards collectedRewards, IAdService adService) {
             _progression = progression;
             _rules = rules;
             _wheelBuilder = wheelBuilder;
             _spinResolver = spinResolver;
             _wallet = wallet;
             _revivePolicy = revivePolicy;
+            _collectedRewards = collectedRewards;
             _adService = adService;
         }
 
@@ -85,9 +82,9 @@ namespace CardGame.Run
                 return;
             }
 
-            Collect(slice);
+            _collectedRewards.Add(slice.Reward, slice.Amount);
             if (_zone >= _progression.MaxZone) {
-                DepositCurrencies();
+                _collectedRewards.DepositCurrencies();
                 EndRun();
                 return;
             }
@@ -134,19 +131,12 @@ namespace CardGame.Run
         public void Leave() {
             if (!CanLeave) return;
 
-            if (CanCollectRewards) DepositCurrencies();
+            if (CanCollectRewards) _collectedRewards.DepositCurrencies();
             EndRun();
-        }
-
-        private void DepositCurrencies() {
-            foreach (var collected in _collectedRewards) {
-                if (collected.Key.Category == RewardCategory.Currency) _wallet.Add(collected.Key, collected.Value);
-            }
         }
 
         private void EndRun() {
             _collectedRewards.Clear();
-            RewardsCleared?.Invoke();
             EnterMenu();
         }
 
@@ -156,13 +146,6 @@ namespace CardGame.Run
             IsBombDisarmed = false;
             ZoneChanged?.Invoke(new ZoneInfo(zone, _progression.GetZoneType(zone), _slices));
             SetState(RunState.Ready);
-        }
-
-        private void Collect(WheelSlice slice) {
-            _collectedRewards.TryGetValue(slice.Reward, out int total);
-            total += slice.Amount;
-            _collectedRewards[slice.Reward] = total;
-            RewardCollected?.Invoke(slice.Reward, slice.Amount, total);
         }
 
         private void SetState(RunState state) {

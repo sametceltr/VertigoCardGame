@@ -36,12 +36,13 @@ namespace CardGame.Run
             var random = new SeededRandom(Environment.TickCount);
             var wallet = new Wallet(_rules.StartingBalances);
             var wheelBuilder = new WheelBuilder(_progression, new AmountCalculator(_progression), random);
+            var collectedRewards = new CollectedRewards(wallet);
 
             _run = new GameRun(_progression, _rules, wheelBuilder, new SpinResolver(random), wallet,
-                new RevivePolicy(_rules), _adService);
+                new RevivePolicy(_rules), collectedRewards, _adService);
             _wheelView.Initialize(_run, _visuals);
             _zoneBarView.Initialize(_run, _progression, _visuals);
-            _rewardPanelView.Initialize(_run, _confirmPopupView);
+            _rewardPanelView.Initialize(_run, collectedRewards, _confirmPopupView);
             _bombPopupView.Initialize(_run, _confirmPopupView);
             _balanceBarView.Initialize(_run, wallet);
             _menuView.Initialize(_run);

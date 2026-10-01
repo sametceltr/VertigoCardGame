@@ -21,11 +21,13 @@ namespace CardGame.Rewards.View
         private readonly Dictionary<RewardDefinitionSO, RewardItemView> _items = new Dictionary<RewardDefinitionSO, RewardItemView>();
 
         private GameRun _run;
+        private CollectedRewards _collectedRewards;
 
-        public void Initialize(GameRun run, ConfirmPopupView confirmPopup) {
+        public void Initialize(GameRun run, CollectedRewards collectedRewards, ConfirmPopupView confirmPopup) {
             _run = run;
-            _run.RewardCollected += OnRewardCollected;
-            _run.RewardsCleared += OnRewardsCleared;
+            _collectedRewards = collectedRewards;
+            _collectedRewards.Changed += OnRewardChanged;
+            _collectedRewards.Cleared += OnRewardsCleared;
             _run.StateChanged += OnStateChanged;
             _leaveButton.onClick.AddListener(() => confirmPopup.Ask(_run.ExitOutcome, _run.Leave));
         }
@@ -33,12 +35,12 @@ namespace CardGame.Rewards.View
         private void OnDestroy() {
             if (_run == null) return;
 
-            _run.RewardCollected -= OnRewardCollected;
-            _run.RewardsCleared -= OnRewardsCleared;
+            _collectedRewards.Changed -= OnRewardChanged;
+            _collectedRewards.Cleared -= OnRewardsCleared;
             _run.StateChanged -= OnStateChanged;
         }
 
-        private void OnRewardCollected(RewardDefinitionSO reward, int amount, int total) {
+        private void OnRewardChanged(RewardDefinitionSO reward, int total) {
             ItemFor(reward).SetTotal(total);
         }
 
