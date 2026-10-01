@@ -74,23 +74,25 @@ namespace CardGame.Wheel.View
         private void OnStateChanged(RunState state) {
             _spinButton.interactable = state == RunState.Ready;
 
-            float bombAlpha = _run.IsBombDisarmed ? _disarmedBombAlpha : 1f;
+            float bombAlpha = _run.IsBombDisarmed ? _disarmedBombAlpha : SliceView.OpaqueAlpha;
             for (int i = 0; i < _currentSlices.Count; i++) {
                 if (_currentSlices[i].Type == SliceType.Bomb) _slices[i].SetAlpha(bombAlpha);
             }
         }
 
         private void OnSpinStarted(int landingIndex) {
-            var wheel = _baseImage.rectTransform;
-            float sliceAngle = FullTurn / _slices.Length;
-            float currentAngle = wheel.localEulerAngles.z;
-            float landingAngle = landingIndex * sliceAngle;
-            float clockwiseDistance = Mathf.Repeat(currentAngle - landingAngle, FullTurn);
-            float endAngle = currentAngle - (_extraTurns * FullTurn + clockwiseDistance);
-
-            _spinTween = wheel.DOLocalRotate(new Vector3(0f, 0f, endAngle), _spinDuration, RotateMode.FastBeyond360)
+            var endRotation = new Vector3(0f, 0f, EndAngleFor(landingIndex));
+            _spinTween = _baseImage.rectTransform.DOLocalRotate(endRotation, _spinDuration, RotateMode.FastBeyond360)
                 .SetEase(_spinEase)
                 .OnComplete(_run.CompleteSpin);
+        }
+
+        private float EndAngleFor(int landingIndex) {
+            float sliceAngle = FullTurn / _slices.Length;
+            float currentAngle = _baseImage.rectTransform.localEulerAngles.z;
+            float landingAngle = landingIndex * sliceAngle;
+            float clockwiseDistance = Mathf.Repeat(currentAngle - landingAngle, FullTurn);
+            return currentAngle - (_extraTurns * FullTurn + clockwiseDistance);
         }
 
     #if UNITY_EDITOR

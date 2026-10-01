@@ -7,6 +7,8 @@ namespace CardGame.Wheel.View
 {
     public class SliceView : MonoBehaviour
     {
+        public const float OpaqueAlpha = 1f;
+
         [SerializeField] private Image _icon;
         [SerializeField] private ParentFitter _iconFitter;
         [SerializeField] private TextMeshProUGUI _amountText;
@@ -16,7 +18,7 @@ namespace CardGame.Wheel.View
             _icon.sprite = isBomb ? bombIcon : slice.Reward.Icon;
             _iconFitter.CalculateAspectRatio();
             _amountText.text = isBomb ? string.Empty : AmountFormatter.Format(slice.Amount);
-            SetAlpha(1f);
+            SetAlpha(OpaqueAlpha);
         }
 
         public void SetAlpha(float alpha) {
