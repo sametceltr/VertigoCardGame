@@ -28,7 +28,7 @@ namespace CardGame.Run.View
 
             _giveUpButton.onClick.AddListener(_run.GiveUp);
             _reviveWithGoldButton.onClick.AddListener(_run.ReviveWithGold);
-            _reviveWithAdButton.gameObject.SetActive(false);
+            _reviveWithAdButton.onClick.AddListener(_run.ReviveWithAd);
         }
 
         private void OnDestroy() {
@@ -46,6 +46,7 @@ namespace CardGame.Run.View
         private void ShowReviveOffer() {
             _reviveCostText.text = string.Format(ReviveCostFormat, AmountFormatter.Exact(_run.ReviveCost));
             _reviveWithGoldButton.interactable = _run.CanReviveWithGold;
+            _reviveWithAdButton.gameObject.SetActive(_run.CanReviveWithAd);
         }
 
     #if UNITY_EDITOR

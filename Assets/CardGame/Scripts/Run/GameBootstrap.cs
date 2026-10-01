@@ -1,4 +1,5 @@
 using System;
+using CardGame.Ads;
 using CardGame.Core.Randomness;
 using CardGame.Rewards.View;
 using CardGame.Run.View;
@@ -26,6 +27,9 @@ namespace CardGame.Run
         [SerializeField] private MenuView _menuView;
         [SerializeField] private LeaveConfirmView _leaveConfirmView;
 
+        [Header("Services")]
+        [SerializeField] private SimulatedAdService _adService;
+
         private GameRun _run;
 
         private void Awake() {
@@ -33,7 +37,8 @@ namespace CardGame.Run
             var wallet = new Wallet(_rules.StartingBalances);
             var wheelBuilder = new WheelBuilder(_progression, new AmountCalculator(_progression), random);
 
-            _run = new GameRun(_progression, _rules, wheelBuilder, new SpinResolver(random), wallet, new RevivePolicy(_rules));
+            _run = new GameRun(_progression, _rules, wheelBuilder, new SpinResolver(random), wallet,
+                new RevivePolicy(_rules), _adService);
             _wheelView.Initialize(_run, _visuals);
             _zoneBarView.Initialize(_run, _progression, _visuals);
             _rewardPanelView.Initialize(_run, _leaveConfirmView);
@@ -51,7 +56,7 @@ namespace CardGame.Run
         private void OnValidate() {
             if (_progression == null || _visuals == null || _rules == null || _wheelView == null || _zoneBarView == null
                 || _rewardPanelView == null || _bombPopupView == null || _balanceBarView == null || _menuView == null
-                || _leaveConfirmView == null) {
+                || _leaveConfirmView == null || _adService == null) {
                 Debug.LogWarning($"{name}: a data asset or view reference is missing.", this);
                 return;
             }

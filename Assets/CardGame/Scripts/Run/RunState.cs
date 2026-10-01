@@ -5,6 +5,7 @@ namespace CardGame.Run
         InMenu,
         Ready,
         Spinning,
-        BombHit
+        BombHit,
+        WatchingAd
     }
 }

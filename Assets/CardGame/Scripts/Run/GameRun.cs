@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using CardGame.Ads;
 using CardGame.Rewards;
 using CardGame.Wheel;
 using CardGame.Zones;
@@ -14,12 +15,14 @@ namespace CardGame.Run
         private readonly SpinResolver _spinResolver;
         private readonly Wallet _wallet;
         private readonly RevivePolicy _revivePolicy;
+        private readonly IAdService _adService;
         private readonly Dictionary<RewardDefinitionSO, int> _collectedRewards = new Dictionary<RewardDefinitionSO, int>();
 
         private int _zone;
         private IReadOnlyList<WheelSlice> _slices;
         private int _landingIndex;
         private int _reviveCount;
+        private bool _isAdReviveUsed;
 
         public event Action<RunState> StateChanged;
         public event Action<ZoneInfo> ZoneChanged;
@@ -32,16 +35,19 @@ namespace CardGame.Run
         public IReadOnlyDictionary<RewardDefinitionSO, int> CollectedRewards => _collectedRewards;
         public int ReviveCost => _revivePolicy.CostFor(_reviveCount);
         public bool CanReviveWithGold => State == RunState.BombHit && _wallet.BalanceOf(_rules.ReviveCurrency) >= ReviveCost;
+        public bool CanReviveWithAd => State == RunState.BombHit && !_isAdReviveUsed;
         public bool CanLeave => State == RunState.Ready;
         public bool CanCollectRewards => CanLeave && _progression.GetZoneType(_zone) != ZoneType.Normal;
 
-        public GameRun(ZoneProgressionSO progression, GameRulesSO rules, WheelBuilder wheelBuilder, SpinResolver spinResolver, Wallet wallet, RevivePolicy revivePolicy) {
+        public GameRun(ZoneProgressionSO progression, GameRulesSO rules, WheelBuilder wheelBuilder, SpinResolver spinResolver,
+            Wallet wallet, RevivePolicy revivePolicy, IAdService adService) {
             _progression = progression;
             _rules = rules;
             _wheelBuilder = wheelBuilder;
             _spinResolver = spinResolver;
             _wallet = wallet;
             _revivePolicy = revivePolicy;
+            _adService = adService;
         }
 
         public void EnterMenu() {
@@ -87,6 +93,27 @@ namespace CardGame.Run
 
             _wallet.TrySpend(_rules.ReviveCurrency, ReviveCost);
             _reviveCount++;
+            RespinWithBombDisarmed();
+        }
+
+        public void ReviveWithAd() {
+            if (!CanReviveWithAd) return;
+
+            SetState(RunState.WatchingAd);
+            _adService.ShowRewardedAd(OnAdFinished);
+        }
+
+        private void OnAdFinished(bool isCompleted) {
+            if (!isCompleted) {
+                SetState(RunState.BombHit);
+                return;
+            }
+
+            _isAdReviveUsed = true;
+            RespinWithBombDisarmed();
+        }
+
+        private void RespinWithBombDisarmed() {
             IsBombDisarmed = true;
             SetState(RunState.Ready);
         }
