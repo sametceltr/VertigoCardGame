@@ -32,6 +32,8 @@ namespace CardGame.Run
         public IReadOnlyDictionary<RewardDefinitionSO, int> CollectedRewards => _collectedRewards;
         public int ReviveCost => _revivePolicy.CostFor(_reviveCount);
         public bool CanReviveWithGold => State == RunState.BombHit && _wallet.BalanceOf(_rules.ReviveCurrency) >= ReviveCost;
+        public bool CanLeave => State == RunState.Ready;
+        public bool CanCollectRewards => CanLeave && _progression.GetZoneType(_zone) != ZoneType.Normal;
 
         public GameRun(ZoneProgressionSO progression, GameRulesSO rules, WheelBuilder wheelBuilder, SpinResolver spinResolver, Wallet wallet, RevivePolicy revivePolicy) {
             _progression = progression;
@@ -72,6 +74,7 @@ namespace CardGame.Run
 
             Collect(slice);
             if (_zone >= _progression.MaxZone) {
+                DepositCurrencies();
                 EndRun();
                 return;
             }
@@ -92,6 +95,19 @@ namespace CardGame.Run
             if (State != RunState.BombHit) return;
 
             EndRun();
+        }
+
+        public void Leave() {
+            if (!CanLeave) return;
+
+            if (CanCollectRewards) DepositCurrencies();
+            EndRun();
+        }
+
+        private void DepositCurrencies() {
+            foreach (var collected in _collectedRewards) {
+                if (collected.Key.Category == RewardCategory.Currency) _wallet.Add(collected.Key, collected.Value);
+            }
         }
 
         private void EndRun() {

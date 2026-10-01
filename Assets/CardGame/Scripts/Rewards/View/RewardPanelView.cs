@@ -1,23 +1,33 @@
 using System.Collections.Generic;
 using CardGame.Run;
+using CardGame.Run.View;
+using CardGame.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace CardGame.Rewards.View
 {
     public class RewardPanelView : MonoBehaviour
     {
+        private const string LeaveButtonName = "ui_button_exit";
+
         [Header("List")]
         [SerializeField] private RectTransform _itemContainer;
         [SerializeField] private RewardItemView _itemPrefab;
+
+        [Header("Buttons")]
+        [SerializeField] private Button _leaveButton;
 
         private readonly Dictionary<RewardDefinitionSO, RewardItemView> _items = new Dictionary<RewardDefinitionSO, RewardItemView>();
 
         private GameRun _run;
 
-        public void Initialize(GameRun run) {
+        public void Initialize(GameRun run, LeaveConfirmView leaveConfirm) {
             _run = run;
             _run.RewardCollected += OnRewardCollected;
             _run.RewardsCleared += OnRewardsCleared;
+            _run.StateChanged += OnStateChanged;
+            _leaveButton.onClick.AddListener(leaveConfirm.Open);
         }
 
         private void OnDestroy() {
@@ -25,6 +35,7 @@ namespace CardGame.Rewards.View
 
             _run.RewardCollected -= OnRewardCollected;
             _run.RewardsCleared -= OnRewardsCleared;
+            _run.StateChanged -= OnStateChanged;
         }
 
         private void OnRewardCollected(RewardDefinitionSO reward, int amount, int total) {
@@ -38,6 +49,10 @@ namespace CardGame.Rewards.View
             _items.Clear();
         }
 
+        private void OnStateChanged(RunState state) {
+            _leaveButton.interactable = _run.CanLeave;
+        }
+
         private RewardItemView ItemFor(RewardDefinitionSO reward) {
             if (_items.TryGetValue(reward, out var item)) return item;
 
@@ -46,5 +61,11 @@ namespace CardGame.Rewards.View
             _items.Add(reward, item);
             return item;
         }
+
+    #if UNITY_EDITOR
+        private void OnValidate() {
+            _leaveButton = ChildButtons.FindIfMissing(this, _leaveButton, LeaveButtonName);
+        }
+    #endif
     }
 }

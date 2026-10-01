@@ -29,6 +29,7 @@ namespace CardGame.Wheel.View
         [SerializeField] private float _spinDuration = 3f;
         [SerializeField] private int _extraTurns = 3;
         [SerializeField] private Ease _spinEase = Ease.OutQuart;
+        [SerializeField] private float _resultHoldDuration = 0.6f;
 
         private GameRun _run;
         private ZoneVisualsSO _visuals;
@@ -86,8 +87,10 @@ namespace CardGame.Wheel.View
 
         private void OnSpinStarted(int landingIndex) {
             var endRotation = new Vector3(0f, 0f, EndAngleFor(landingIndex));
-            _spinTween = _baseImage.rectTransform.DOLocalRotate(endRotation, _spinDuration, RotateMode.FastBeyond360)
-                .SetEase(_spinEase)
+            var rotation = _baseImage.rectTransform.DOLocalRotate(endRotation, _spinDuration, RotateMode.FastBeyond360).SetEase(_spinEase);
+            _spinTween = DOTween.Sequence()
+                .Append(rotation)
+                .AppendInterval(_resultHoldDuration)
                 .OnComplete(_run.CompleteSpin);
         }
 
