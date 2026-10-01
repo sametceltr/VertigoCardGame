@@ -2,6 +2,7 @@ using System;
 using CardGame.Ads;
 using CardGame.Core.Randomness;
 using CardGame.Rewards.View;
+using CardGame.Run;
 using CardGame.Run.View;
 using CardGame.Wheel;
 using CardGame.Wheel.View;
@@ -9,7 +10,7 @@ using CardGame.Zones;
 using CardGame.Zones.View;
 using UnityEngine;
 
-namespace CardGame.Run
+namespace CardGame
 {
     public class GameBootstrap : MonoBehaviour
     {
