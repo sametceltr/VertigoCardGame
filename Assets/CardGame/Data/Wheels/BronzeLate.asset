@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa9d10ceb9aec643a285c1875a694f3, type: 3}
+  m_Name: BronzeLate
+  m_EditorClassIdentifier: 
+  _slices:
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: 4cdfcacd42ce9df4fa64dc7f5b15fcae, type: 2}
+      _appearanceWeight: 1
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: 693c405ebdfdc964799d257ccb9c1c7a, type: 2}
+      _appearanceWeight: 1
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: adeb0fc32fb951142a7e58ee45a5d426, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: ad5799520e72f1c4782cbb08c3d6bb87, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: 5d4497332728dcd4bb6f5cb6684e7be9, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: d57fcb19ba8c7414b994179b048f5832, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: 8a852268a4e0b964d93ae0375da8a3cb, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: 5af766050067df84e9052a2ae7c189e6, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: e301c5671adc94c46ad21728b9685332, type: 2}
+      _appearanceWeight: 1
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: a4f8376c9d743d94a846a595eeeb6448, type: 2}
+      _appearanceWeight: 6
+    - _reward: {fileID: 11400000, guid: 0a965e9b95667894ba0a2ee79831143e, type: 2}
+      _appearanceWeight: 6
+    - _reward: {fileID: 11400000, guid: e2bd0c688a2ec4a49ab3112dfc674235, type: 2}
+      _appearanceWeight: 6
+    - _reward: {fileID: 11400000, guid: 104815e31ca26cf42ad85389d1a78185, type: 2}
+      _appearanceWeight: 6
+    - _reward: {fileID: 11400000, guid: 63cbb4a64e57d514092676a0ec98c30b, type: 2}
+      _appearanceWeight: 6
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: a1a7a5823ac60d642a978284c079de8c, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: b94250d50b56f8548a520ea4fa1cfbac, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: 24f56f430576a9b49ac47847a8fe378d, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: 91740849bcc4b664697c0cdc02f792b1, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: b29eaefd57697f5498f1e13afb4f40d5, type: 2}
+      _appearanceWeight: 1
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: adeb0fc32fb951142a7e58ee45a5d426, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: ad5799520e72f1c4782cbb08c3d6bb87, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: 5d4497332728dcd4bb6f5cb6684e7be9, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: d57fcb19ba8c7414b994179b048f5832, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: 8a852268a4e0b964d93ae0375da8a3cb, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: 5af766050067df84e9052a2ae7c189e6, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: e301c5671adc94c46ad21728b9685332, type: 2}
+      _appearanceWeight: 1
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: 75bb473a1f6ebc541aada6689cd57707, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: 09df017f34b78684c9ec06fc4f2a7cf1, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: 26ba486a90a3ca644b3e1a290e0cbf8b, type: 2}
+      _appearanceWeight: 1
+  - _type: 1
+    _landingWeight: 1
+    _pool: []

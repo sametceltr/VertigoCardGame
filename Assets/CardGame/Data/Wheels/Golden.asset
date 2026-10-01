@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa9d10ceb9aec643a285c1875a694f3, type: 3}
+  m_Name: Golden
+  m_EditorClassIdentifier: 
+  _slices:
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: 4cdfcacd42ce9df4fa64dc7f5b15fcae, type: 2}
+      _appearanceWeight: 1
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: d5fcb1b96b50f0a40863561fd8182153, type: 2}
+      _appearanceWeight: 1
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: cf60e04e99e1b2d4988d02ae9ca1c507, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: 45ceed26347e91542b454d3256ebcf3d, type: 2}
+      _appearanceWeight: 1
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: e2bd0c688a2ec4a49ab3112dfc674235, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: 104815e31ca26cf42ad85389d1a78185, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: 63cbb4a64e57d514092676a0ec98c30b, type: 2}
+      _appearanceWeight: 1
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: 4c520d983e879264ab657a45f62538fb, type: 2}
+      _appearanceWeight: 1
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: 0b1dfc0f6415f8d40bcd8592cda8f02d, type: 2}
+      _appearanceWeight: 1
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: 1de746a99556c914e80e9a71c378a0da, type: 2}
+      _appearanceWeight: 1
+    - _reward: {fileID: 11400000, guid: 83bc281070c9de845aaf350a2f198885, type: 2}
+      _appearanceWeight: 1
+  - _type: 0
+    _landingWeight: 1
+    _pool:
+    - _reward: {fileID: 11400000, guid: a5bac16ceedfed74eb5385dcaf358767, type: 2}
+      _appearanceWeight: 1
