@@ -22,12 +22,12 @@ namespace CardGame.Rewards.View
 
         private GameRun _run;
 
-        public void Initialize(GameRun run, LeaveConfirmView leaveConfirm) {
+        public void Initialize(GameRun run, ConfirmPopupView confirmPopup) {
             _run = run;
             _run.RewardCollected += OnRewardCollected;
             _run.RewardsCleared += OnRewardsCleared;
             _run.StateChanged += OnStateChanged;
-            _leaveButton.onClick.AddListener(leaveConfirm.Open);
+            _leaveButton.onClick.AddListener(() => confirmPopup.Ask(_run.ExitOutcome, _run.Leave));
         }
 
         private void OnDestroy() {

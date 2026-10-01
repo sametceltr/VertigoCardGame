@@ -22,11 +22,11 @@ namespace CardGame.Run.View
 
         private GameRun _run;
 
-        public void Initialize(GameRun run) {
+        public void Initialize(GameRun run, ConfirmPopupView confirmPopup) {
             _run = run;
             _run.StateChanged += OnStateChanged;
 
-            _giveUpButton.onClick.AddListener(_run.GiveUp);
+            _giveUpButton.onClick.AddListener(() => confirmPopup.Ask(_run.ExitOutcome, _run.GiveUp));
             _reviveWithGoldButton.onClick.AddListener(_run.ReviveWithGold);
             _reviveWithAdButton.onClick.AddListener(_run.ReviveWithAd);
         }

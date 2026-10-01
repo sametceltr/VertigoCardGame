@@ -39,6 +39,13 @@ namespace CardGame.Run
         public bool CanLeave => State == RunState.Ready;
         public bool CanCollectRewards => CanLeave && _progression.GetZoneType(_zone) != ZoneType.Normal;
 
+        public ExitOutcome ExitOutcome {
+            get {
+                if (CanCollectRewards) return ExitOutcome.CollectRewards;
+                return _collectedRewards.Count > 0 ? ExitOutcome.LoseRewards : ExitOutcome.NoRewards;
+            }
+        }
+
         public GameRun(ZoneProgressionSO progression, GameRulesSO rules, WheelBuilder wheelBuilder, SpinResolver spinResolver,
             Wallet wallet, RevivePolicy revivePolicy, IAdService adService) {
             _progression = progression;

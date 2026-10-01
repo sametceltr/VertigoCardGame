@@ -1,3 +1,4 @@
+using System;
 using CardGame.UI;
 using TMPro;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 
 namespace CardGame.Run.View
 {
-    public class LeaveConfirmView : MonoBehaviour
+    public class ConfirmPopupView : MonoBehaviour
     {
         private const string ConfirmButtonName = "ui_button_confirm";
         private const string GoBackButtonName = "ui_button_go_back";
@@ -15,21 +16,17 @@ namespace CardGame.Run.View
         [SerializeField] private Button _goBackButton;
 
         [Header("Texts")]
+        [SerializeField] private TextMeshProUGUI _titleText;
         [SerializeField] private TextMeshProUGUI _messageText;
         [SerializeField] private TextMeshProUGUI _confirmLabel;
 
-        [Header("Collect (safe and super zones)")]
-        [SerializeField, TextArea] private string _collectMessage = "Want to exit and collect your rewards?";
-        [SerializeField] private string _collectLabel = "Collect Rewards";
-        [SerializeField] private Color _collectButtonColor = Color.green;
-
-        [Header("Quit (other zones)")]
-        [SerializeField, TextArea] private string _loseRewardsMessage = "Leaving now loses your rewards. Still want to quit?";
-        [SerializeField, TextArea] private string _noRewardsMessage = "No rewards are available. Still want to quit?";
-        [SerializeField] private string _quitLabel = "Exit";
-        [SerializeField] private Color _quitButtonColor = Color.white;
+        [Header("Confirmations")]
+        [SerializeField] private Confirmation _collectRewards;
+        [SerializeField] private Confirmation _loseRewards;
+        [SerializeField] private Confirmation _noRewards;
 
         private GameRun _run;
+        private Action _onConfirmed;
 
         public void Initialize(GameRun run) {
             _run = run;
@@ -38,9 +35,9 @@ namespace CardGame.Run.View
             _goBackButton.onClick.AddListener(Close);
         }
 
-        public void Open() {
-            if (_run.CanCollectRewards) ShowOffer(_collectMessage, _collectLabel, _collectButtonColor);
-            else ShowOffer(_run.CollectedRewards.Count > 0 ? _loseRewardsMessage : _noRewardsMessage, _quitLabel, _quitButtonColor);
+        public void Ask(ExitOutcome outcome, Action onConfirmed) {
+            _onConfirmed = onConfirmed;
+            Show(ConfirmationFor(outcome));
             gameObject.SetActive(true);
         }
 
@@ -51,18 +48,29 @@ namespace CardGame.Run.View
         }
 
         private void OnStateChanged(RunState state) {
-            if (state != RunState.Ready) Close();
+            Close();
         }
 
         private void OnConfirmClicked() {
             Close();
-            _run.Leave();
+            _onConfirmed();
         }
 
-        private void ShowOffer(string message, string confirmLabel, Color confirmColor) {
-            _messageText.text = message;
-            _confirmLabel.text = confirmLabel;
-            _confirmButton.image.color = confirmColor;
+        private Confirmation ConfirmationFor(ExitOutcome outcome) {
+            switch (outcome) {
+                case ExitOutcome.CollectRewards: return _collectRewards;
+                case ExitOutcome.LoseRewards: return _loseRewards;
+                case ExitOutcome.NoRewards: return _noRewards;
+                default: throw new ArgumentOutOfRangeException(nameof(outcome), outcome, null);
+            }
+        }
+
+        private void Show(Confirmation confirmation) {
+            _titleText.text = confirmation.Title;
+            _titleText.gameObject.SetActive(!string.IsNullOrEmpty(confirmation.Title));
+            _messageText.text = confirmation.Message;
+            _confirmLabel.text = confirmation.ConfirmLabel;
+            _confirmButton.image.color = confirmation.ConfirmColor;
         }
 
         private void Close() {
