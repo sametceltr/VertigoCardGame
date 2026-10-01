@@ -466,7 +466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_Name
-      value: ui_image_slice_content
+      value: ui_container_slice_content
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_IsActive
@@ -1021,7 +1021,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_Name
-      value: ui_image_slice_content
+      value: ui_container_slice_content
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_IsActive
@@ -2091,7 +2091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_Name
-      value: ui_image_slice_content
+      value: ui_container_slice_content
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_IsActive
@@ -2228,7 +2228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_Name
-      value: ui_image_slice_content
+      value: ui_container_slice_content
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_IsActive
@@ -2399,7 +2399,7 @@ GameObject:
   - component: {fileID: 727810796}
   - component: {fileID: 727810795}
   m_Layer: 5
-  m_Name: ui_image_mask_pale
+  m_Name: ui_image_zone_bar_fade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2854,7 +2854,7 @@ GameObject:
   - component: {fileID: 855169137}
   - component: {fileID: 855169136}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: ui_canvas
   m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3046,7 +3046,7 @@ GameObject:
   - component: {fileID: 931661771}
   - component: {fileID: 931661773}
   m_Layer: 5
-  m_Name: ui_panel_content
+  m_Name: ui_container_zone_bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3664,7 +3664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_Name
-      value: ui_image_slice_content
+      value: ui_container_slice_content
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_IsActive
@@ -3805,7 +3805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7553570383196423660, guid: 48345bdaf65849c45a4ac1c399630287, type: 3}
       propertyPath: m_Name
-      value: ui_panel_overlay
+      value: ui_panel_bomb_popup
       objectReference: {fileID: 0}
     - target: {fileID: 7553570383196423660, guid: 48345bdaf65849c45a4ac1c399630287, type: 3}
       propertyPath: m_IsActive
@@ -4900,7 +4900,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_Name
-      value: ui_image_slice_content
+      value: ui_container_slice_content
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_IsActive
@@ -5400,7 +5400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_Name
-      value: ui_image_slice_content
+      value: ui_container_slice_content
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_IsActive
@@ -6311,7 +6311,7 @@ GameObject:
   - component: {fileID: 2048587539}
   - component: {fileID: 2048587541}
   m_Layer: 5
-  m_Name: ui_panel_content
+  m_Name: ui_panel_zone_bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6500,7 +6500,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 816002443772027981, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: m_Name
-      value: ui_image_slice_content
+      value: ui_container_slice_content
       objectReference: {fileID: 0}
     - target: {fileID: 7264707466975276234, guid: de76b858c16a20942a4abc9d031f685e, type: 3}
       propertyPath: rewardSO

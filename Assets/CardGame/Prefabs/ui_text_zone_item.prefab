@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9158948102803333719}
   - component: {fileID: 817001499591505033}
   m_Layer: 5
-  m_Name: ui_text_level_bar_item
+  m_Name: ui_text_zone_item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
