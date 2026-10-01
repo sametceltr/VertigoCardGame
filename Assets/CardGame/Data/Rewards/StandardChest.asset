@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8c39e7ef1b983a46ae4e68c0f5d8390, type: 3}
+  m_Name: StandardChest
+  m_EditorClassIdentifier: 
+  _icon: {fileID: 21300000, guid: 85daf13436550a244af32ef3e2a4caeb, type: 3}
+  _category: 3
