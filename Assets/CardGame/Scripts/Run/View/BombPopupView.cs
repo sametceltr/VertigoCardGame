@@ -1,3 +1,4 @@
+using CardGame.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,25 +7,60 @@ namespace CardGame.Run.View
 {
     public class BombPopupView : MonoBehaviour
     {
-        [Header("Buttons")]
-        [SerializeField] private Button giveUpButton;
-        [SerializeField] private Button coinReviveButton;
-        [SerializeField] private Button watchReviveButton;
+        private const string GiveUpButtonName = "ui_button_give_up";
+        private const string ReviveWithGoldButtonName = "ui_button_revive_coin";
+        private const string ReviveWithAdButtonName = "ui_button_revive_watch";
+        private const string ReviveCostFormat = "Revive for {0}";
 
-        [Header("Text")]
-        [SerializeField] private TextMeshProUGUI coinReviveText;
+        [Header("Buttons")]
+        [SerializeField] private Button _giveUpButton;
+        [SerializeField] private Button _reviveWithGoldButton;
+        [SerializeField] private Button _reviveWithAdButton;
+
+        [Header("Revive")]
+        [SerializeField] private TextMeshProUGUI _reviveCostText;
+
+        private GameRun _run;
+
+        public void Initialize(GameRun run) {
+            _run = run;
+            _run.StateChanged += OnStateChanged;
+
+            _giveUpButton.onClick.AddListener(_run.GiveUp);
+            _reviveWithGoldButton.onClick.AddListener(_run.ReviveWithGold);
+            _reviveWithAdButton.gameObject.SetActive(false);
+        }
+
+        private void OnDestroy() {
+            if (_run == null) return;
+
+            _run.StateChanged -= OnStateChanged;
+        }
+
+        private void OnStateChanged(RunState state) {
+            bool isBombHit = state == RunState.BombHit;
+            gameObject.SetActive(isBombHit);
+            if (isBombHit) ShowReviveOffer();
+        }
+
+        private void ShowReviveOffer() {
+            _reviveCostText.text = string.Format(ReviveCostFormat, AmountFormatter.Exact(_run.ReviveCost));
+            _reviveWithGoldButton.interactable = _run.CanReviveWithGold;
+        }
 
     #if UNITY_EDITOR
         private void OnValidate() {
-            if (giveUpButton != null && coinReviveButton != null && watchReviveButton != null) return;
+            _giveUpButton = FindButton(_giveUpButton, GiveUpButtonName);
+            _reviveWithGoldButton = FindButton(_reviveWithGoldButton, ReviveWithGoldButtonName);
+            _reviveWithAdButton = FindButton(_reviveWithAdButton, ReviveWithAdButtonName);
+        }
 
-            var children = transform.GetComponentsInChildren<Button>();
+        private Button FindButton(Button current, string buttonName) {
+            if (current != null) return current;
 
-            foreach (var child in children) {
-                if (child.name.Contains("give")) giveUpButton = child;
-                else if (child.name.Contains("coin")) coinReviveButton = child;
-                else if (child.name.Contains("watch")) watchReviveButton = child;
-            }
+            var button = ChildButtons.Find(transform, buttonName);
+            if (button == null) Debug.LogWarning($"{name}: no child button named {buttonName}.", this);
+            return button;
         }
     #endif
     }
