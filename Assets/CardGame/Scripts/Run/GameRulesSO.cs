@@ -15,6 +15,7 @@ namespace CardGame.Run
         public RewardDefinitionSO ReviveCurrency => _reviveCurrency;
         public IReadOnlyList<int> ReviveCosts => _reviveCosts;
 
+    #if UNITY_EDITOR
         private void OnValidate() {
             if (_reviveCurrency == null) Debug.LogWarning($"{name}: no revive currency is set.", this);
             if (_reviveCosts == null || _reviveCosts.Length == 0) Debug.LogWarning($"{name}: the revive cost table is empty.", this);
@@ -25,5 +26,6 @@ namespace CardGame.Run
                 else if (balance.Currency.Category != RewardCategory.Currency) Debug.LogWarning($"{name}: starting balance {balance.Currency.name} is not a currency.", this);
             }
         }
+    #endif
     }
 }

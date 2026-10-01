@@ -58,6 +58,7 @@ namespace CardGame.Zones
             return _bands[_bands.Length - 1].Content;
         }
 
+    #if UNITY_EDITOR
         private void OnValidate() {
             if (_maxZone <= 0 || _safeZoneInterval <= 0 || _superZoneInterval <= 0 || _sliceCount <= 0 || _roundingStep <= 0) {
                 Debug.LogWarning($"{name}: zone counts, intervals, slice count and rounding step must be above 0.", this);
@@ -119,5 +120,6 @@ namespace CardGame.Zones
             if (requiresBomb && bombCount != 1) Debug.LogWarning($"{name}: {label} ({content.name}) needs exactly one bomb slice.", this);
             if (!allowsBomb && bombCount > 0) Debug.LogWarning($"{name}: {label} ({content.name}) must not have a bomb slice.", this);
         }
+    #endif
     }
 }

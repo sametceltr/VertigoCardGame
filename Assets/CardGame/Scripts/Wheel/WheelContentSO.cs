@@ -10,6 +10,7 @@ namespace CardGame.Wheel
 
         public IReadOnlyList<SliceEntry> Slices => _slices;
 
+    #if UNITY_EDITOR
         private void OnValidate() {
             if (_slices == null) return;
 
@@ -47,5 +48,6 @@ namespace CardGame.Wheel
 
             if (totalAppearanceWeight <= 0) Debug.LogWarning($"{name}: slice {sliceIndex + 1} has no pool entry with a positive appearance weight.", this);
         }
+    #endif
     }
 }
