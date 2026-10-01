@@ -44,7 +44,9 @@ namespace CardGame.Ads
 
         private void Finish(bool isCompleted) {
             gameObject.SetActive(false);
-            _onFinished(isCompleted);
+            var onFinished = _onFinished;
+            _onFinished = null;
+            onFinished(isCompleted);
         }
 
         private void ShowSecondsLeft(float secondsLeft) {

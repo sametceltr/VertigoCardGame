@@ -9,19 +9,15 @@ namespace CardGame.Run
     public class GameRun
     {
         private readonly ZoneProgressionSO _progression;
-        private readonly GameRulesSO _rules;
         private readonly WheelBuilder _wheelBuilder;
         private readonly SpinResolver _spinResolver;
-        private readonly Wallet _wallet;
-        private readonly RevivePolicy _revivePolicy;
-        private readonly IAdService _adService;
         private readonly CollectedRewards _collectedRewards;
+        private readonly ReviveOptions _reviveOptions;
+        private readonly IAdService _adService;
 
         private int _zone;
         private IReadOnlyList<WheelSlice> _slices;
         private int _landingIndex;
-        private int _reviveCount;
-        private bool _isAdReviveUsed;
 
         public event Action<RunState> StateChanged;
         public event Action<ZoneInfo> ZoneChanged;
@@ -29,9 +25,9 @@ namespace CardGame.Run
 
         public RunState State { get; private set; }
         public bool IsBombDisarmed { get; private set; }
-        public int ReviveCost => _revivePolicy.CostFor(_reviveCount);
-        public bool CanReviveWithGold => State == RunState.BombHit && _wallet.BalanceOf(_rules.ReviveCurrency) >= ReviveCost;
-        public bool CanReviveWithAd => State == RunState.BombHit && !_isAdReviveUsed;
+        public int ReviveCost => _reviveOptions.GoldCost;
+        public bool CanReviveWithGold => State == RunState.BombHit && _reviveOptions.CanAffordGold;
+        public bool CanReviveWithAd => State == RunState.BombHit && _reviveOptions.IsAdAvailable;
         public bool CanLeave => State == RunState.Ready;
         public bool CanCollectRewards => CanLeave && _progression.GetZoneType(_zone) != ZoneType.Normal;
 
@@ -42,15 +38,13 @@ namespace CardGame.Run
             }
         }
 
-        public GameRun(ZoneProgressionSO progression, GameRulesSO rules, WheelBuilder wheelBuilder, SpinResolver spinResolver,
-            Wallet wallet, RevivePolicy revivePolicy, CollectedRewards collectedRewards, IAdService adService) {
+        public GameRun(ZoneProgressionSO progression, WheelBuilder wheelBuilder, SpinResolver spinResolver,
+            CollectedRewards collectedRewards, ReviveOptions reviveOptions, IAdService adService) {
             _progression = progression;
-            _rules = rules;
             _wheelBuilder = wheelBuilder;
             _spinResolver = spinResolver;
-            _wallet = wallet;
-            _revivePolicy = revivePolicy;
             _collectedRewards = collectedRewards;
+            _reviveOptions = reviveOptions;
             _adService = adService;
         }
 
@@ -61,7 +55,7 @@ namespace CardGame.Run
         public void StartNewRun() {
             if (State != RunState.InMenu) return;
 
-            _reviveCount = 0;
+            _reviveOptions.ResetForNewRun();
             EnterZone(1);
         }
 
@@ -93,10 +87,8 @@ namespace CardGame.Run
         }
 
         public void ReviveWithGold() {
-            if (!CanReviveWithGold) return;
+            if (State != RunState.BombHit || !_reviveOptions.TryPayWithGold()) return;
 
-            _wallet.TrySpend(_rules.ReviveCurrency, ReviveCost);
-            _reviveCount++;
             RespinWithBombDisarmed();
         }
 
@@ -108,12 +100,14 @@ namespace CardGame.Run
         }
 
         private void OnAdFinished(bool isCompleted) {
+            if (State != RunState.WatchingAd) return;
+
             if (!isCompleted) {
                 SetState(RunState.BombHit);
                 return;
             }
 
-            _isAdReviveUsed = true;
+            _reviveOptions.UseAd();
             RespinWithBombDisarmed();
         }
 

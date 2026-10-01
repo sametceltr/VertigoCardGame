@@ -37,9 +37,9 @@ namespace CardGame.Run
             var wallet = new Wallet(_rules.StartingBalances);
             var wheelBuilder = new WheelBuilder(_progression, new AmountCalculator(_progression), random);
             var collectedRewards = new CollectedRewards(wallet);
+            var reviveOptions = new ReviveOptions(_rules.ReviveCurrency, _rules.ReviveCosts, wallet);
 
-            _run = new GameRun(_progression, _rules, wheelBuilder, new SpinResolver(random), wallet,
-                new RevivePolicy(_rules), collectedRewards, _adService);
+            _run = new GameRun(_progression, wheelBuilder, new SpinResolver(random), collectedRewards, reviveOptions, _adService);
             _wheelView.Initialize(_run, _visuals);
             _zoneBarView.Initialize(_run, _progression, _visuals);
             _rewardPanelView.Initialize(_run, collectedRewards, _confirmPopupView);
