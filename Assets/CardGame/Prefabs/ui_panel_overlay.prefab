@@ -1886,7 +1886,7 @@ GameObject:
   - component: {fileID: 7553570384265493824}
   - component: {fileID: 7553570384265493825}
   m_Layer: 5
-  m_Name: ui_text_revive_coin
+  m_Name: ui_text_revive_cost_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
