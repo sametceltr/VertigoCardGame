@@ -25,6 +25,7 @@ namespace CardGame.Zones.View
         private bool _isLaidOut;
 
         private RectTransform BoxRect => _currentZoneBox.rectTransform;
+        private bool HasCurrentZone => _currentZone > 0;
 
         public void Initialize(GameRun run, ZoneProgressionSO progression, ZoneVisualsSO visuals) {
             _run = run;
@@ -44,7 +45,7 @@ namespace CardGame.Zones.View
         private void OnZoneChanged(ZoneInfo zone) {
             if (!_isLaidOut) LayOutItems();
 
-            bool isNextZone = zone.Zone == _currentZone + 1;
+            bool isNextZone = HasCurrentZone && zone.Zone == _currentZone + 1;
 
             Highlight(zone.Zone);
             ApplyBoxVisuals(zone.Type);
@@ -75,7 +76,7 @@ namespace CardGame.Zones.View
         }
 
         private void Highlight(int zone) {
-            if (_currentZone > 0) ItemFor(_currentZone).SetCurrent(false);
+            if (HasCurrentZone) ItemFor(_currentZone).SetCurrent(false);
             _currentZone = zone;
             ItemFor(_currentZone).SetCurrent(true);
         }
