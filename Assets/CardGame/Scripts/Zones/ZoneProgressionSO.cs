@@ -14,8 +14,6 @@ namespace CardGame.Zones
         [SerializeField] private int _superZoneInterval;
 
         [Header("Amounts")]
-        [SerializeField] private int _tierSize;
-        [SerializeField] private int _safeAndSuperMultiplier;
         [SerializeField] private RewardDefinitionSO _cashReward;
         [SerializeField] private int _cashBase;
         [SerializeField] private int _cashPerZone;
@@ -31,8 +29,6 @@ namespace CardGame.Zones
         public int MaxZone => _maxZone;
         public int SafeZoneInterval => _safeZoneInterval;
         public int SuperZoneInterval => _superZoneInterval;
-        public int TierSize => _tierSize;
-        public int SafeAndSuperMultiplier => _safeAndSuperMultiplier;
         public RewardDefinitionSO CashReward => _cashReward;
         public int CashBase => _cashBase;
         public int CashPerZone => _cashPerZone;
@@ -61,8 +57,8 @@ namespace CardGame.Zones
         }
 
         private void OnValidate() {
-            if (_maxZone <= 0 || _safeZoneInterval <= 0 || _superZoneInterval <= 0 || _tierSize <= 0 || _safeAndSuperMultiplier <= 0 || _sliceCount <= 0 || _roundingStep <= 0) {
-                Debug.LogWarning($"{name}: zone counts, intervals, tier size, multiplier, slice count and rounding step must be above 0.", this);
+            if (_maxZone <= 0 || _safeZoneInterval <= 0 || _superZoneInterval <= 0 || _sliceCount <= 0 || _roundingStep <= 0) {
+                Debug.LogWarning($"{name}: zone counts, intervals, slice count and rounding step must be above 0.", this);
                 return;
             }
 

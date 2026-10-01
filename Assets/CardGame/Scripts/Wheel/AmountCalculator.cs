@@ -12,17 +12,11 @@ namespace CardGame.Wheel
         }
 
         public int AmountFor(RewardDefinitionSO reward, int zone) {
-            int multiplier = _progression.GetZoneType(zone) == ZoneType.Normal ? 1 : _progression.SafeAndSuperMultiplier;
-
             int amount = reward == _progression.CashReward
-                ? (_progression.CashBase + _progression.CashPerZone * zone) * multiplier
-                : TierOf(zone) * multiplier;
+                ? _progression.CashBase + _progression.CashPerZone * zone
+                : zone;
 
             return RoundDown(amount);
-        }
-
-        private int TierOf(int zone) {
-            return (zone + _progression.TierSize - 1) / _progression.TierSize;
         }
 
         private int RoundDown(int amount) {
