@@ -50,17 +50,9 @@ namespace CardGame.Run.View
 
     #if UNITY_EDITOR
         private void OnValidate() {
-            _giveUpButton = FindButton(_giveUpButton, GiveUpButtonName);
-            _reviveWithGoldButton = FindButton(_reviveWithGoldButton, ReviveWithGoldButtonName);
-            _reviveWithAdButton = FindButton(_reviveWithAdButton, ReviveWithAdButtonName);
-        }
-
-        private Button FindButton(Button current, string buttonName) {
-            if (current != null) return current;
-
-            var button = ChildButtons.Find(transform, buttonName);
-            if (button == null) Debug.LogWarning($"{name}: no child button named {buttonName}.", this);
-            return button;
+            _giveUpButton = ChildButtons.FindIfMissing(this, _giveUpButton, GiveUpButtonName);
+            _reviveWithGoldButton = ChildButtons.FindIfMissing(this, _reviveWithGoldButton, ReviveWithGoldButtonName);
+            _reviveWithAdButton = ChildButtons.FindIfMissing(this, _reviveWithAdButton, ReviveWithAdButtonName);
         }
     #endif
     }

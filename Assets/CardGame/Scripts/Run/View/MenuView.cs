@@ -31,8 +31,7 @@ namespace CardGame.Run.View
 
     #if UNITY_EDITOR
         private void OnValidate() {
-            if (_playButton == null) _playButton = ChildButtons.Find(transform, PlayButtonName);
-            if (_playButton == null) Debug.LogWarning($"{name}: no child button named {PlayButtonName}.", this);
+            _playButton = ChildButtons.FindIfMissing(this, _playButton, PlayButtonName);
         }
     #endif
     }

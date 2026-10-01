@@ -101,8 +101,7 @@ namespace CardGame.Wheel.View
 
     #if UNITY_EDITOR
         private void OnValidate() {
-            if (_spinButton == null) _spinButton = ChildButtons.Find(transform, SpinButtonName);
-            if (_spinButton == null) Debug.LogWarning($"{name}: no child button named {SpinButtonName}.", this);
+            _spinButton = ChildButtons.FindIfMissing(this, _spinButton, SpinButtonName);
         }
     #endif
     }

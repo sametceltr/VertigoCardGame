@@ -11,5 +11,13 @@ namespace CardGame.UI
             }
             return null;
         }
+
+        public static Button FindIfMissing(Component owner, Button current, string buttonName) {
+            if (current != null) return current;
+
+            var button = Find(owner.transform, buttonName);
+            if (button == null) Debug.LogWarning($"{owner.name}: no child button named {buttonName}.", owner);
+            return button;
+        }
     }
 }
