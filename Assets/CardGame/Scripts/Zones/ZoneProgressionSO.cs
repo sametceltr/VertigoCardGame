@@ -29,8 +29,6 @@ namespace CardGame.Zones
         [SerializeField] private ZoneOverride[] _overrides;
 
         public int MaxZone => _maxZone;
-        public int SafeZoneInterval => _safeZoneInterval;
-        public int SuperZoneInterval => _superZoneInterval;
         public RewardDefinitionSO CashReward => _cashReward;
         public int CashBase => _cashBase;
         public int CashPerZone => _cashPerZone;
