@@ -24,7 +24,7 @@ namespace CardGame.Zones.View
         private int _currentZone;
 
         private RectTransform BoxRect => _currentZoneBox.rectTransform;
-        private bool HasCurrentZone => _currentZone > 0;
+        private bool HasCurrentZone => _currentZone >= ZoneProgressionSO.FirstZone;
 
         public void Initialize(GameRun run, ZoneProgressionSO progression, ZoneVisualsSO visuals) {
             _run = run;
@@ -62,8 +62,8 @@ namespace CardGame.Zones.View
         }
 
         private void SpawnItems(ZoneProgressionSO progression) {
-            _items = new ZoneItem[progression.MaxZone];
-            for (int zone = 1; zone <= _items.Length; zone++) {
+            _items = new ZoneItem[IndexOf(progression.MaxZone) + 1];
+            for (int zone = ZoneProgressionSO.FirstZone; zone <= progression.MaxZone; zone++) {
                 var item = Instantiate(_zoneItemPrefab, _content);
                 item.Initialize(zone, _visuals.For(progression.GetZoneType(zone)));
                 _items[IndexOf(zone)] = item;
@@ -73,9 +73,9 @@ namespace CardGame.Zones.View
         private void LayOutItems() {
             _itemWidth = BoxRect.rect.width;
 
-            for (int zone = 1; zone <= _items.Length; zone++) {
-                var rect = ItemFor(zone).RectTransform;
-                rect.anchoredPosition = new Vector2(IndexOf(zone) * _itemWidth, 0f);
+            for (int i = 0; i < _items.Length; i++) {
+                var rect = _items[i].RectTransform;
+                rect.anchoredPosition = new Vector2(i * _itemWidth, 0f);
                 rect.sizeDelta = new Vector2(_itemWidth, rect.sizeDelta.y);
             }
         }
@@ -109,7 +109,7 @@ namespace CardGame.Zones.View
 
         private ZoneItem ItemFor(int zone) => _items[IndexOf(zone)];
 
-        private static int IndexOf(int zone) => zone - 1;
+        private static int IndexOf(int zone) => zone - ZoneProgressionSO.FirstZone;
 
         private void KillTweens() {
             _content.DOKill();
