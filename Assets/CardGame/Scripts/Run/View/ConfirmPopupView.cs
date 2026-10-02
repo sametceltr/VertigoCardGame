@@ -8,7 +8,7 @@ namespace CardGame.Run.View
 {
     public class ConfirmPopupView : MonoBehaviour
     {
-        private const string ConfirmButtonName = "ui_button_confirm";
+        private const string ConfirmButtonName = "ui_button_confirm_value";
         private const string GoBackButtonName = "ui_button_go_back";
 
         [Header("Buttons")]
