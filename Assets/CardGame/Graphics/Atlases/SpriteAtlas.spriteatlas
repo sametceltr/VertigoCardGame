@@ -172,7 +172,7 @@ SpriteAtlas:
   - ui_spin_bronze_indicator
   - ui_spin_bronze_base
   - ui_card_panel_zone_coming
-  - ui_card_panel_zone_super
+  - ui_card_panel_zone_safe
   - ui_icon_render_t_cons_molotov
   - ui_icon_render_cons_grenade_m67
   - UI_Icons_Pistol_Points
