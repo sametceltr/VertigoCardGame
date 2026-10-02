@@ -67,7 +67,7 @@ namespace CardGame.Run
             SpinStarted?.Invoke(_landingIndex);
         }
 
-        public void CompleteSpin() {
+        public void ApplySpinResult() {
             if (State != RunState.Spinning) return;
 
             var slice = _slices[_landingIndex];

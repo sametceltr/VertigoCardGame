@@ -91,7 +91,7 @@ namespace CardGame.Wheel.View
             _spinTween = DOTween.Sequence()
                 .Append(rotation)
                 .AppendInterval(_resultHoldDuration)
-                .OnComplete(_run.CompleteSpin);
+                .OnComplete(_run.ApplySpinResult);
         }
 
         private float EndAngleFor(int landingIndex) {
