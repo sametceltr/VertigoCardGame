@@ -20,6 +20,7 @@ namespace CardGame
         [SerializeField] private GameRulesSO _rules;
 
         [Header("Views")]
+        [SerializeField] private CardGameView _cardGameView;
         [SerializeField] private WheelView _wheelView;
         [SerializeField] private ZoneBarView _zoneBarView;
         [SerializeField] private RewardPanelView _rewardPanelView;
@@ -41,6 +42,7 @@ namespace CardGame
             var reviveOptions = new ReviveOptions(_rules.ReviveCurrency, _rules.ReviveCosts, wallet);
 
             _run = new GameRun(_progression, wheelBuilder, new SpinResolver(random), collectedRewards, reviveOptions, _adService);
+            _cardGameView.Initialize(_run);
             _wheelView.Initialize(_run, _visuals);
             _zoneBarView.Initialize(_run, _progression, _visuals);
             _rewardPanelView.Initialize(_run, collectedRewards, _confirmPopupView);
@@ -56,7 +58,7 @@ namespace CardGame
 
     #if UNITY_EDITOR
         private void OnValidate() {
-            if (_progression == null || _visuals == null || _rules == null || _wheelView == null || _zoneBarView == null
+            if (_progression == null || _visuals == null || _rules == null || _cardGameView == null || _wheelView == null || _zoneBarView == null
                 || _rewardPanelView == null || _bombPopupView == null || _balanceBarView == null || _menuView == null
                 || _confirmPopupView == null || _adService == null) {
                 Debug.LogWarning($"{name}: a data asset or view reference is missing.", this);
