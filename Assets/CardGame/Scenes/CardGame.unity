@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 15615313}
   - component: {fileID: 15615315}
   m_Layer: 0
-  m_Name: ui_button_skip
+  m_Name: ui_button_close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4219,7 +4219,7 @@ GameObject:
   - component: {fileID: 1194466864}
   - component: {fileID: 1194466863}
   m_Layer: 0
-  m_Name: ui_text_skip
+  m_Name: ui_text_close
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4529,9 +4529,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24e43adf9f1fc03409d77b6a718fe8f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skipButton: {fileID: 15615315}
+  _closeButton: {fileID: 15615315}
   _countdownText: {fileID: 1880218078}
-  _durationSeconds: 3
+  _durationSeconds: 5
 --- !u!224 &1279283951
 RectTransform:
   m_ObjectHideFlags: 0

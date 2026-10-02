@@ -9,44 +9,44 @@ namespace CardGame.Ads
 {
     public class SimulatedAdService : MonoBehaviour, IAdService
     {
-        private const string SkipButtonName = "ui_button_skip";
+        private const string CloseButtonName = "ui_button_close";
 
         [Header("Buttons")]
-        [SerializeField] private Button _skipButton;
+        [SerializeField] private Button _closeButton;
 
         [Header("Countdown")]
         [SerializeField] private TextMeshProUGUI _countdownText;
-        [SerializeField] private float _durationSeconds = 3f;
+        [SerializeField] private float _durationSeconds = 5f;
 
         private Action<bool> _onFinished;
         private Tween _countdown;
 
         public void ShowRewardedAd(Action<bool> onFinished) {
             _onFinished = onFinished;
+            _closeButton.gameObject.SetActive(false);
             gameObject.SetActive(true);
             _countdown = DOVirtual.Float(_durationSeconds, 0f, _durationSeconds, ShowSecondsLeft)
                 .SetEase(Ease.Linear)
-                .OnComplete(() => Finish(true));
+                .OnComplete(ShowCloseButton);
         }
 
         private void Awake() {
-            _skipButton.onClick.AddListener(Skip);
+            _closeButton.onClick.AddListener(Close);
         }
 
         private void OnDestroy() {
             _countdown?.Kill();
         }
 
-        private void Skip() {
-            _countdown.Kill();
-            Finish(false);
+        private void ShowCloseButton() {
+            _closeButton.gameObject.SetActive(true);
         }
 
-        private void Finish(bool isCompleted) {
+        private void Close() {
             gameObject.SetActive(false);
             var onFinished = _onFinished;
             _onFinished = null;
-            onFinished(isCompleted);
+            onFinished(true);
         }
 
         private void ShowSecondsLeft(float secondsLeft) {
@@ -55,7 +55,7 @@ namespace CardGame.Ads
 
     #if UNITY_EDITOR
         private void OnValidate() {
-            _skipButton = ChildButtons.FindIfMissing(this, _skipButton, SkipButtonName);
+            _closeButton = ChildButtons.FindIfMissing(this, _closeButton, CloseButtonName);
         }
     #endif
     }
