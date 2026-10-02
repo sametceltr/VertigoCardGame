@@ -1,24 +1,39 @@
-# Vertigo Mobile Case Study
+# Wheel of Fortune — Vertigo Games Case Study
 
-## Gameplay Demo Video
+A spin-the-wheel risk game for Android, made in Unity 2021.3 LTS. Each spin gives a reward and moves you to the next zone, unless it hits the bomb and you lose everything collected in the run.
 
-Link: https://drive.google.com/file/d/1Js1VhlWqF6Eqy1V1s5xLP81lyVPt9I0b/view?usp=sharing
+**Download:** [latest APK](https://github.com/sametceltr/VertigoCardGame/releases/latest)
 
-https://github.com/user-attachments/assets/4f41e305-c942-491a-9751-a7fe4ab15fff
+| | Normal zone | Super zone | Bomb |
+|---|---|---|---|
+| **20:9** | ![](Docs/Screenshots/20x9_gameplay.png) | ![](Docs/Screenshots/20x9_super_zone.png) | ![](Docs/Screenshots/20x9_bomb.png) |
+| **16:9** | ![](Docs/Screenshots/16x9_gameplay.png) | ![](Docs/Screenshots/16x9_super_zone.png) | ![](Docs/Screenshots/16x9_bomb.png) |
+| **4:3** | ![](Docs/Screenshots/4x3_gameplay.png) | ![](Docs/Screenshots/4x3_super_zone.png) | ![](Docs/Screenshots/4x3_bomb.png) |
 
-## Responsive UI Screenshots
+## Rules
 
-The UI automatically adjusts to maintain visual integrity across diverse mobile device displays.
+- Every 5th zone is a **safe zone** (silver spin, no bomb) and every 30th a **super zone** (golden spin, special rewards, no bomb).
+- After a bomb you can revive with gold (cost rises each time), watch an ad once per session, or give up.
+- You can leave whenever the wheel isn't spinning, but you only keep your rewards on a safe or super zone.
 
-### 4:3
+## Architecture
 
-<img width="1200" height="900" alt="4-3" src="https://github.com/user-attachments/assets/6f266030-bd3a-4ebf-af87-59038d028b97" />
+- **`GameBootstrap`** creates and connects everything and injects dependencies through constructors.
+- **`GameRun`** is a plain C# state machine that owns the run. `WheelBuilder`, `SpinResolver`, `AmountCalculator`, `Wallet`, `CollectedRewards` and `ReviveOptions` each handle one part of it.
+- **Views** subscribe to `GameRun` events and call its commands; they never change game state themselves.
+- **`IRandom`** and **`IAdService`** keep the random source and the ad provider replaceable.
 
-### 20:9
+All tuning lives in ScriptableObjects under `Assets/CardGame/Data` (zones, wheels, rewards, rules, visuals), and each asset validates its values in the editor.
 
-<img width="1920" height="869" alt="20-9" src="https://github.com/user-attachments/assets/07000c45-76b4-43b4-89e2-65f10d354c39" />
+## Design choices
 
-### 16:9
+- **Leaving:** allowed on any zone, but rewards are only kept on safe and super zones.
+- **Sliced sprites:** panels, frames and buttons are 9-sliced; pictures (reward icons, bomb art) use Preserve Aspect instead, since slicing would distort them.
+- **Sprite atlas:** all UI sprites share one atlas page, except the large bomb flash, which would need a page of its own.
+- **Zone panels:** the super and safe zone panels show the current zone while you're on it.
+- **Revives:** gold revives get more expensive each time; the ad revive can be used once per session.
 
-<img width="1595" height="897" alt="16-9" src="https://github.com/user-attachments/assets/d37e3451-6073-46de-ac78-755c25db0a6c" />
+## Notes
 
+- The UI uses Canvas Scaler **Expand** and TextMeshPro, and buttons are wired in code from `OnValidate`.
+- Landscape only. Open `Assets/CardGame/Scenes/CardGame.unity` to run it in the editor.
