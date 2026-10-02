@@ -22,7 +22,6 @@ namespace CardGame.Zones.View
         private float _itemWidth;
         private float _boxRestX;
         private int _currentZone;
-        private bool _isLaidOut;
 
         private RectTransform BoxRect => _currentZoneBox.rectTransform;
         private bool HasCurrentZone => _currentZone > 0;
@@ -30,6 +29,7 @@ namespace CardGame.Zones.View
         public void Initialize(GameRun run, ZoneProgressionSO progression, ZoneVisualsSO visuals) {
             _run = run;
             _visuals = visuals;
+            _boxRestX = BoxRect.anchoredPosition.x;
 
             SpawnItems(progression);
             _run.ZoneChanged += OnZoneChanged;
@@ -42,8 +42,15 @@ namespace CardGame.Zones.View
             _run.ZoneChanged -= OnZoneChanged;
         }
 
+        private void OnRectTransformDimensionsChange() {
+            if (_items == null) return;
+
+            LayOutItems();
+            if (HasCurrentZone) SnapToCurrent();
+        }
+
         private void OnZoneChanged(ZoneInfo zone) {
-            if (!_isLaidOut) LayOutItems();
+            if (_itemWidth == 0f) LayOutItems();
 
             bool isNextZone = HasCurrentZone && zone.Zone == _currentZone + 1;
 
@@ -65,14 +72,12 @@ namespace CardGame.Zones.View
 
         private void LayOutItems() {
             _itemWidth = BoxRect.rect.width;
-            _boxRestX = BoxRect.anchoredPosition.x;
 
             for (int zone = 1; zone <= _items.Length; zone++) {
                 var rect = ItemFor(zone).RectTransform;
                 rect.anchoredPosition = new Vector2(IndexOf(zone) * _itemWidth, 0f);
                 rect.sizeDelta = new Vector2(_itemWidth, rect.sizeDelta.y);
             }
-            _isLaidOut = true;
         }
 
         private void Highlight(int zone) {
