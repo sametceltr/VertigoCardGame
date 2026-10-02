@@ -4,6 +4,8 @@ A spin-the-wheel risk game for Android, made in Unity 2021.3 LTS. Each spin give
 
 **Download:** [latest APK](https://github.com/sametceltr/VertigoCardGame/releases/latest)
 
+https://github.com/user-attachments/assets/6e1fc597-a370-4d50-a413-e75d43c8a230
+
 | | Normal zone | Super zone | Bomb |
 |---|---|---|---|
 | **20:9** | ![](Docs/Screenshots/20x9_gameplay.png) | ![](Docs/Screenshots/20x9_super_zone.png) | ![](Docs/Screenshots/20x9_bomb.png) |
