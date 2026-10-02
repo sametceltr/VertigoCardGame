@@ -18,7 +18,7 @@ MonoBehaviour:
     _wheelBase: {fileID: 21300000, guid: 46940135a829ffc46a3db55ebbbdc1c9, type: 3}
     _wheelIndicator: {fileID: 21300000, guid: bcfc1905db79c0e408778af1e0abe7d3, type: 3}
     _zoneNumberColor: {r: 1, g: 1, b: 1, a: 1}
-    _currentZoneNumberColor: {r: 1, g: 1, b: 1, a: 1}
+    _currentZoneNumberColor: {r: 0, g: 0, b: 0, a: 1}
     _currentZoneBoxSprite: {fileID: 21300000, guid: ef216e1a5b3c4624bab06a72af1a1464, type: 3}
     _currentZoneBoxColor: {r: 1, g: 1, b: 1, a: 1}
   _safe:
@@ -36,6 +36,6 @@ MonoBehaviour:
     _wheelBase: {fileID: 21300000, guid: 0d091380fcd5c9f45842ccba64471ab6, type: 3}
     _wheelIndicator: {fileID: 21300000, guid: c7ea7c6bb5bbf11479092850b5e20393, type: 3}
     _zoneNumberColor: {r: 0.8588236, g: 0.7137255, b: 0.31764707, a: 1}
-    _currentZoneNumberColor: {r: 0.8588236, g: 0.69803923, b: 0.32941177, a: 1}
+    _currentZoneNumberColor: {r: 0, g: 0, b: 0, a: 1}
     _currentZoneBoxSprite: {fileID: 21300000, guid: ef216e1a5b3c4624bab06a72af1a1464, type: 3}
-    _currentZoneBoxColor: {r: 1, g: 1, b: 1, a: 1}
+    _currentZoneBoxColor: {r: 0.9607843, g: 0.72156864, b: 0.18039216, a: 1}
