@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace CardGame.Ads
+namespace CardGame.Ads.View
 {
     public class SimulatedAdService : MonoBehaviour, IAdService
     {

@@ -1,5 +1,5 @@
 using System;
-using CardGame.Ads;
+using CardGame.Ads.View;
 using CardGame.Core.Randomness;
 using CardGame.Rewards.View;
 using CardGame.Run;
