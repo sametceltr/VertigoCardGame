@@ -44,6 +44,15 @@ namespace CardGame.Zones
             return ZoneType.Normal;
         }
 
+        public bool TryGetNextZone(int fromZone, ZoneType type, out int zone) {
+            for (zone = fromZone; zone <= _maxZone; zone++) {
+                if (GetZoneType(zone) == type) return true;
+            }
+
+            zone = 0;
+            return false;
+        }
+
         public WheelContentSO GetContent(int zone) {
             foreach (var zoneOverride in _overrides) {
                 if (zoneOverride.Zone == zone) return zoneOverride.Content;

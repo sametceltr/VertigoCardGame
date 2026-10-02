@@ -23,6 +23,7 @@ namespace CardGame
         [SerializeField] private CardGameView _cardGameView;
         [SerializeField] private WheelView _wheelView;
         [SerializeField] private ZoneBarView _zoneBarView;
+        [SerializeField] private ZoneInfoView _zoneInfoView;
         [SerializeField] private RewardPanelView _rewardPanelView;
         [SerializeField] private BombPopupView _bombPopupView;
         [SerializeField] private BalanceBarView _menuBalanceBar;
@@ -46,6 +47,7 @@ namespace CardGame
             _cardGameView.Initialize(_run);
             _wheelView.Initialize(_run, _visuals);
             _zoneBarView.Initialize(_run, _progression, _visuals);
+            _zoneInfoView.Initialize(_run, _progression);
             _rewardPanelView.Initialize(_run, collectedRewards, _confirmPopupView);
             _bombPopupView.Initialize(_run, _confirmPopupView);
             _menuBalanceBar.Initialize(wallet);
@@ -60,7 +62,7 @@ namespace CardGame
 
     #if UNITY_EDITOR
         private void OnValidate() {
-            if (_progression == null || _visuals == null || _rules == null || _cardGameView == null || _wheelView == null || _zoneBarView == null
+            if (_progression == null || _visuals == null || _rules == null || _cardGameView == null || _wheelView == null || _zoneBarView == null || _zoneInfoView == null
                 || _rewardPanelView == null || _bombPopupView == null || _menuBalanceBar == null || _bombPopupBalanceBar == null || _menuView == null
                 || _confirmPopupView == null || _adService == null) {
                 Debug.LogWarning($"{name}: a data asset or view reference is missing.", this);
