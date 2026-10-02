@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingBalances:
   - _currency: {fileID: 11400000, guid: 693c405ebdfdc964799d257ccb9c1c7a, type: 2}
-    _amount: 500
+    _amount: 100
   _reviveCurrency: {fileID: 11400000, guid: 693c405ebdfdc964799d257ccb9c1c7a, type: 2}
   _reviveCosts: 19000000320000004b0000007d000000c80000002c010000c2010000bc020000
