@@ -25,7 +25,8 @@ namespace CardGame
         [SerializeField] private ZoneBarView _zoneBarView;
         [SerializeField] private RewardPanelView _rewardPanelView;
         [SerializeField] private BombPopupView _bombPopupView;
-        [SerializeField] private BalanceBarView _balanceBarView;
+        [SerializeField] private BalanceBarView _menuBalanceBar;
+        [SerializeField] private BalanceBarView _bombPopupBalanceBar;
         [SerializeField] private MenuView _menuView;
         [SerializeField] private ConfirmPopupView _confirmPopupView;
 
@@ -47,7 +48,8 @@ namespace CardGame
             _zoneBarView.Initialize(_run, _progression, _visuals);
             _rewardPanelView.Initialize(_run, collectedRewards, _confirmPopupView);
             _bombPopupView.Initialize(_run, _confirmPopupView);
-            _balanceBarView.Initialize(_run, wallet);
+            _menuBalanceBar.Initialize(wallet);
+            _bombPopupBalanceBar.Initialize(wallet);
             _menuView.Initialize(_run);
             _confirmPopupView.Initialize(_run);
         }
@@ -59,7 +61,7 @@ namespace CardGame
     #if UNITY_EDITOR
         private void OnValidate() {
             if (_progression == null || _visuals == null || _rules == null || _cardGameView == null || _wheelView == null || _zoneBarView == null
-                || _rewardPanelView == null || _bombPopupView == null || _balanceBarView == null || _menuView == null
+                || _rewardPanelView == null || _bombPopupView == null || _menuBalanceBar == null || _bombPopupBalanceBar == null || _menuView == null
                 || _confirmPopupView == null || _adService == null) {
                 Debug.LogWarning($"{name}: a data asset or view reference is missing.", this);
                 return;
