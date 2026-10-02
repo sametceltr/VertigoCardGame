@@ -87,7 +87,7 @@ namespace CardGame.Run
         }
 
         public void ReviveWithGold() {
-            if (State != RunState.BombHit || !_reviveOptions.TryPayWithGold()) return;
+            if (!CanReviveWithGold || !_reviveOptions.TryPayWithGold()) return;
 
             RespinWithBombDisarmed();
         }
