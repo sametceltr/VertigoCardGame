@@ -52,9 +52,9 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 2b6f108ce09cb524299b5abbe0060164, type: 3}
     - {fileID: 2800000, guid: fd2fc2ab81bbe3b4281c43db7d3638d1, type: 3}
     - {fileID: 2800000, guid: 57c0e32fa7c63634db533ce69627f786, type: 3}
-    - {fileID: 2800000, guid: c3595745417f1d3448563f21b98d4ef8, type: 3}
-    - {fileID: 2800000, guid: 2211f0d30778ecb479671bef676ea848, type: 3}
-    - {fileID: 2800000, guid: fe589c9bec7cfde45bb9d8fd7fa5cde8, type: 3}
+    - {fileID: 2800000, guid: 46940135a829ffc46a3db55ebbbdc1c9, type: 3}
+    - {fileID: 2800000, guid: 290af6ddd83f3e34c8ed04dfc98deabb, type: 3}
+    - {fileID: 2800000, guid: bcfc1905db79c0e408778af1e0abe7d3, type: 3}
     - {fileID: 2800000, guid: 58d46685d400b5142988b72712124df3, type: 3}
     - {fileID: 2800000, guid: ef216e1a5b3c4624bab06a72af1a1464, type: 3}
     - {fileID: 2800000, guid: a2aaa28cd5511624497117d7a7861cc8, type: 3}
@@ -94,9 +94,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: c7ea7c6bb5bbf11479092850b5e20393, type: 3}
     - {fileID: 2800000, guid: 0d091380fcd5c9f45842ccba64471ab6, type: 3}
     - {fileID: 2800000, guid: 0cd4ca5aa856f3049b90faff8debfd72, type: 3}
-    - {fileID: 2800000, guid: 46940135a829ffc46a3db55ebbbdc1c9, type: 3}
-    - {fileID: 2800000, guid: bcfc1905db79c0e408778af1e0abe7d3, type: 3}
-    - {fileID: 2800000, guid: 290af6ddd83f3e34c8ed04dfc98deabb, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -110,14 +107,12 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0f6b23b158e448544a4def7701bc0d58, type: 3}
   - {fileID: 21300000, guid: c28d2872f05a6c543848bdd2b01f1566, type: 3}
   - {fileID: 21300000, guid: d57835633aa1ba841879c4619652d3e5, type: 3}
-  - {fileID: 21300000, guid: 2211f0d30778ecb479671bef676ea848, type: 3}
   - {fileID: 21300000, guid: a7ae2f14ed0368443b7f08338181f355, type: 3}
   - {fileID: 21300000, guid: 85daf13436550a244af32ef3e2a4caeb, type: 3}
   - {fileID: 21300000, guid: c873de741cea6ae4f8bc9f0c2fa25ccf, type: 3}
   - {fileID: 21300000, guid: 60a951a4a0f7270409f1e440ce117055, type: 3}
   - {fileID: 21300000, guid: bcfc1905db79c0e408778af1e0abe7d3, type: 3}
   - {fileID: 21300000, guid: 46940135a829ffc46a3db55ebbbdc1c9, type: 3}
-  - {fileID: 21300000, guid: c3595745417f1d3448563f21b98d4ef8, type: 3}
   - {fileID: 21300000, guid: 58d46685d400b5142988b72712124df3, type: 3}
   - {fileID: 21300000, guid: 088d8eb50a7803843ac30679878c7176, type: 3}
   - {fileID: 21300000, guid: 2d6b60f5fe4f33d46b80832eac3a13ac, type: 3}
@@ -137,7 +132,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d72d422b5285ac24c984f8863ed6a434, type: 3}
   - {fileID: 21300000, guid: c7ea7c6bb5bbf11479092850b5e20393, type: 3}
   - {fileID: 21300000, guid: e5b55e8bd3d15db488c46c5635bfb5ae, type: 3}
-  - {fileID: 21300000, guid: fe589c9bec7cfde45bb9d8fd7fa5cde8, type: 3}
   - {fileID: 21300000, guid: fd2fc2ab81bbe3b4281c43db7d3638d1, type: 3}
   - {fileID: 21300000, guid: 470f70db00018e74f93a6cbfcabb7aff, type: 3}
   - {fileID: 21300000, guid: 2b6f108ce09cb524299b5abbe0060164, type: 3}
@@ -164,14 +158,12 @@ SpriteAtlas:
   - UI_Icons_Shotgun_Points
   - ui_icon_mle_bayonet_summer_vice
   - UI_Icon_Renders_tier3_shotgun
-  - ui_card_panel_zone_current
   - UI_Icons_Knife_Points
   - UI_icon_chest_standart_nolight
   - UI_button_orange_standard
   - UI_Icon_Renders_tier2_mle
   - ui_spin_bronze_indicator
   - ui_spin_bronze_base
-  - ui_card_panel_zone_coming
   - ui_card_panel_zone_safe
   - ui_icon_render_t_cons_molotov
   - ui_icon_render_cons_grenade_m67
@@ -191,7 +183,6 @@ SpriteAtlas:
   - UI_Icons_Sniper_Points
   - ui_spin_golden_indicator
   - ui_icon_render_cons_grenade_m26
-  - ui_card_panel_zone_current_white
   - ui_card_icon_death
   - UI_icon_cash
   - ui_card_frame_gardient
