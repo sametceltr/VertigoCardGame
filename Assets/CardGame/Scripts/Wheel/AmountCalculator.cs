@@ -12,11 +12,7 @@ namespace CardGame.Wheel
         }
 
         public int AmountFor(RewardDefinitionSO reward, int zone) {
-            int amount = reward == _progression.CashReward
-                ? _progression.CashBase + _progression.CashPerZone * zone
-                : zone;
-
-            return RoundDown(amount);
+            return RoundDown(reward.BaseAmount + reward.AmountPerZone * zone);
         }
 
         private int RoundDown(int amount) {

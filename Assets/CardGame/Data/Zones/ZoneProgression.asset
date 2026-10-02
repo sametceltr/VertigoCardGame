@@ -15,9 +15,6 @@ MonoBehaviour:
   _maxZone: 60
   _safeZoneInterval: 5
   _superZoneInterval: 30
-  _cashReward: {fileID: 11400000, guid: 4cdfcacd42ce9df4fa64dc7f5b15fcae, type: 2}
-  _cashBase: 250
-  _cashPerZone: 170
   _roundingThreshold: 1000
   _roundingStep: 100
   _sliceCount: 8

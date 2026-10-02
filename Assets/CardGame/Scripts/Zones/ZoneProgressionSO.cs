@@ -16,9 +16,6 @@ namespace CardGame.Zones
         [SerializeField] private int _superZoneInterval;
 
         [Header("Amounts")]
-        [SerializeField] private RewardDefinitionSO _cashReward;
-        [SerializeField] private int _cashBase;
-        [SerializeField] private int _cashPerZone;
         [SerializeField] private int _roundingThreshold;
         [SerializeField] private int _roundingStep;
 
@@ -29,9 +26,6 @@ namespace CardGame.Zones
         [SerializeField] private ZoneOverride[] _overrides;
 
         public int MaxZone => _maxZone;
-        public RewardDefinitionSO CashReward => _cashReward;
-        public int CashBase => _cashBase;
-        public int CashPerZone => _cashPerZone;
         public int RoundingThreshold => _roundingThreshold;
         public int RoundingStep => _roundingStep;
         public int SliceCount => _sliceCount;
@@ -71,9 +65,6 @@ namespace CardGame.Zones
                 Debug.LogWarning($"{name}: zone counts, intervals, slice count and rounding step must be above 0.", this);
                 return;
             }
-
-            if (_roundingStep > _cashPerZone) Debug.LogWarning($"{name}: rounding step is larger than the cash growth per zone, so neighbouring zones can pay the same cash.", this);
-            if (_cashReward == null) Debug.LogWarning($"{name}: no cash reward is set.", this);
 
             ValidateBands();
             ValidateContent(_superContent, "super content", requiresBomb: false, allowsBomb: false);
@@ -122,10 +113,20 @@ namespace CardGame.Zones
             int bombCount = 0;
             foreach (var slice in content.Slices) {
                 if (slice.Type == SliceType.Bomb) bombCount++;
+                foreach (var entry in slice.Pool) {
+                    ValidateRounding(entry.Reward, label);
+                }
             }
 
             if (requiresBomb && bombCount != 1) Debug.LogWarning($"{name}: {label} ({content.name}) needs exactly one bomb slice.", this);
             if (!allowsBomb && bombCount > 0) Debug.LogWarning($"{name}: {label} ({content.name}) must not have a bomb slice.", this);
+        }
+
+        private void ValidateRounding(RewardDefinitionSO reward, string label) {
+            if (reward == null) return;
+
+            bool isRounded = reward.BaseAmount + reward.AmountPerZone * _maxZone >= _roundingThreshold;
+            if (isRounded && reward.AmountPerZone < _roundingStep) Debug.LogWarning($"{name}: {reward.name} in {label} grows by less than the rounding step per zone, so neighbouring zones can pay the same amount.", this);
         }
     #endif
     }

@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: b3ba445a562fa9743845525533606ded, type: 3}
   _category: 3
+  _baseAmount: 0
+  _amountPerZone: 1
